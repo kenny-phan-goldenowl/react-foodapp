@@ -1,0 +1,103 @@
+$primary-color: #1AC073;
+$sub-color: #F0FAF7;
+
+.signup__form {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'ABeeZee', sans-serif;
+	color: $primary-color;
+	height: 100vh;
+}
+
+.signup {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 40%;
+	& h1, h4, p {
+		text-align: center;
+	}
+}
+
+.signup__title {
+	position: relative;
+	top: -25px;
+	font-size: 64px;
+	font-weight: 300;
+	margin-top: 100px;
+}
+
+.signup__subtitle {
+	position: relative;
+	bottom: 25px;
+	font-size: 16px;
+	font-weight: 300;
+	font-style: normal;
+	margin: 20px 0 50px 0;
+}
+
+.signup__input {
+	display: flex;
+	flex-direction: column;
+	height: 400px;
+	justify-content: space-between;
+	margin-bottom: 50px;
+}
+
+.signup input[type="text"], .signup input[type="password"] {
+	background-color: $sub-color;
+	border: none;
+	border-radius: 10px;
+	font-size: 20px;
+	padding: 20px;
+}
+
+.signup input::placeholder {
+	color: $primary-color;
+}
+
+.signup__button {
+	background-color: $primary-color;
+	color: white;
+	border: none;
+	border-radius: 10px;
+	font-weight: 400;
+	font-size: 18px;
+	height: 62px;
+	padding: 20px;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+	cursor: pointer;
+}
+
+.signup__social-login {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 35px;
+	& p {
+		font-size: 18px;
+		font-style: italic;
+		margin-bottom: 25px;
+	}
+	& .signup__logo {
+		display: flex;
+		flex-direction: row;
+		width: 150px;
+		justify-content: space-between;
+	}
+	& .signup__logo div {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 60px;
+		height: 60px;
+		border-radius: 15px;
+		background-color: $sub-color;
+	}
+	& .signup__logo i {
+		cursor: pointer;
+		font-size: 30px;
+		color: blue;
+	}
+}

@@ -1,4 +1,12 @@
+@import url('https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Squada+One&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee&display=swap');
+
 * {
 	margin: 0;
 	padding: 0;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
 }
