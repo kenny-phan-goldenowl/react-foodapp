@@ -1,9 +1,16 @@
 import "./Nav.scss";
+import { useNavigate } from "react-router-dom";
 
 function AuthNav() {
+
+	const navigate = useNavigate();
+	const handleClick = () => {
+		navigate("/")
+	};
+
 	return (
 		<div className='navbar'>
-			<p className='navbar__logo'>TBayEAT</p>
+			<p onClick={handleClick} className='navbar__logo'>TBayEAT</p>
 		</div>
 	);
 }

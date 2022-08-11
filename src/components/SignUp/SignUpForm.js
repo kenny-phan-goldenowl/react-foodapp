@@ -1,12 +1,36 @@
-import { useNavigate } from "react-router-dom";
 import "./SignUp.scss";
+import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { auth, signUpMail } from "../../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 function SignUpForm() {
-	const navigate = useNavigate();
-	const handleClick = () => {
-		navigate("/");
-	};
 
+	const navigate = useNavigate();
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [cpassword, setCpassword] = useState("");
+	const [phone, setPhone] = useState("");
+	const [name, setName] = useState("");
+	const [user, loading, error] = useAuthState(auth);
+
+	const signUp = () => {
+		if (!name) alert("Enter name");
+		if (password === cpassword && password) {
+			signUpMail(name, email, password);
+			navigate("/");
+		}
+	}
+
+	useEffect(() => {
+		if (loading) return;
+		if (user) navigate("/dashBoard");
+	}, [user, loading]);
+
+	const handleClick = () => {
+		navigate("/")
+	}
+	
 	return (
 		<form className='signup__form'>
 			<div className='signup'>
@@ -15,18 +39,17 @@ function SignUpForm() {
 					Sign up and hop on to the food journey!
 				</h4>
 				<div className='signup__input'>
-					<input type='text' placeholder='Username' />
-					<input type='password' placeholder='Password' />
-					<input type='password' placeholder='Confirm Password' />
-					<input type='text' placeholder='Email' />
-					<input type='text' placeholder='Phone Number' />
+					<input value={name} onChange={(e) => setName(e.target.value)}  type='text' placeholder='Username' />
+					<input value={password} onChange={(e) => setPassword(e.target.value)}  type='password' placeholder='Password' />
+					<input value={cpassword} onChange={(e) => setCpassword(e.target.value)}  type='password' placeholder='Confirm Password' />
+					<input value={email} onChange={(e) => setEmail(e.target.value)}  type='text' placeholder='Email' />
+					<input value={phone} onChange={(e) => setPhone(e.target.value)}  type='text' placeholder='Phone Number' />
 				</div>
-				<button onClick={() => handleClick()} className='signup__button'>
-					{" "}
-					Sign Up{" "}
+				<button onClick={signUp} className='signup__button'>
+					Sign Up
 				</button>
 				<div className='signup__social-login'>
-					<p> Or </p>
+					<p onClick={handleClick}> Or </p>
 					<div className='signup__logo'>
 						<div>
 							<i style={{ color: "#1AC073" }} className='bx bxl-google'></i>

@@ -138,3 +138,16 @@ $sub-color: #F0FAF7;
 	}
 }
 
+.container {
+	display: flex;
+	flex-direction: column;
+}
+
+.reset {
+	font-family: 'ABeeZee', sans-serif;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: calc(100vh - 80px) ;
+}

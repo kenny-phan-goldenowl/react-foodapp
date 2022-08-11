@@ -14,7 +14,7 @@ $sub-color: #F0FAF7;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	width: 40%;
+	min-width: 40%;
 	& h1, h4, p {
 		text-align: center;
 	}
