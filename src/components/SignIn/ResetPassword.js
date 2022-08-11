@@ -11,7 +11,7 @@ function ResetPassword() {
 	const navigate = useNavigate();
 	useEffect(() => {
 		if (loading) return;
-		if (user) navigate("/dashBoard");
+		if (user) navigate("/");
 	}, [user, loading]);
 
 	return (

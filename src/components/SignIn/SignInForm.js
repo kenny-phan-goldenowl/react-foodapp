@@ -15,7 +15,7 @@ function SignInForm() {
 			// maybe trigger a loading screen
 			return;
 		}
-		if (user) navigate("/dashBoard");
+		if (user) navigate("/");
 	}, [user, loading]);
 
 	return (
