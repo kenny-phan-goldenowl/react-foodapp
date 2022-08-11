@@ -3,18 +3,22 @@ import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 /* eslint-disable */
-import { getAuth, 
-		signInWithPopup, 
-		signInWithEmailAndPassword, 
-		createUserWithEmailAndPassword, 
-		sendPasswordResetEmail, 
-		signOut } from "firebase/auth";
-import { getFirestore, 
-		query,
-		getDocs,
-		collection,
-		where,
-		addDoc } from "firebase/firestore";
+import {
+	getAuth,
+	signInWithPopup,
+	signInWithEmailAndPassword,
+	createUserWithEmailAndPassword,
+	sendPasswordResetEmail,
+	signOut,
+} from 'firebase/auth';
+import {
+	getFirestore,
+	query,
+	getDocs,
+	collection,
+	where,
+	addDoc,
+} from 'firebase/firestore';
 /* eslint-enable */
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -23,7 +27,7 @@ const firebaseConfig = {
 	projectId: "foodapp-4d4f5",
 	storageBucket: "foodapp-4d4f5.appspot.com",
 	messagingSenderId: "920120821378",
-	appId: "1:920120821378:web:16c9332117562beaeb569b"
+	appId: "1:920120821378:web:16c9332117562beaeb569b",
 };
 
 // Initialize Firebase
@@ -51,6 +55,7 @@ export const signUpMail = async (name, email, password) => {
 			name,
 			authProvider: "local",
 			email,
+			password,
 		});
 	} catch (error) {
 		console.error(error);
@@ -70,4 +75,4 @@ export const sendPasswordReset = async (email) => {
 
 export const logout = () => {
 	signOut(auth);
-}
+};
