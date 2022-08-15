@@ -2,7 +2,7 @@ import "./SignInForm.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth, signInMail } from "../../firebase";
+import { auth, signInMail, signInWithGoogle } from "../../firebase";
 
 function SignInForm() {
 	const navigate = useNavigate();
@@ -68,7 +68,11 @@ function SignInForm() {
 					</p>
 					<div className='signin__logo'>
 						<div>
-							<i style={{ color: "#1AC073" }} className='bx bxl-google'></i>
+							<i
+								onClick={signInWithGoogle}
+								style={{ color: "#1AC073" }}
+								className='bx bxl-google'
+							></i>
 						</div>
 						<div>
 							<i className='bx bxl-facebook-circle'></i>

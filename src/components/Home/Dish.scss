@@ -1,0 +1,82 @@
+$sub-color: #efefef;
+
+.dish__container {
+	width: 20%;
+	box-sizing: border-box;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	font-family: 'ABeeZee';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	margin-bottom: 40px;
+	& .dish__discount {
+		position: absolute;
+		background-color: #F3BA00;
+		padding: 5px;
+		font-size: 12px;
+		border-radius: 8px 0 0 0;
+		letter-spacing: -0.012em;
+	}
+	& img {
+		cursor: pointer;
+	}
+	& .dish__details {
+		position: relative;
+		width: 74%;
+		background-color: white;
+		display: flex;
+		flex-direction: column;
+		padding: 15px 12px;
+		border-radius: 0 0 10px 10px;
+		box-shadow: 0px 0px 1px rgba(187, 187, 187, 0.25);
+	}
+	& .dish__details-top {
+		display: flex;
+		justify-content: space-between;
+	}
+	& .dish__details-bottom {
+		margin-top: 10px;
+		font-size: 12px;
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+	}
+	& .dish__details-rating {
+		background-color: $sub-color;
+		border-radius: 7px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 0 6px;
+		cursor: pointer;
+	}
+	& .dish__details-rating i {
+		margin-right: 3px;
+		font-size: 15px;
+	}
+	& .dish__details-time {
+		position: relative;
+		right: 40px;
+		background-color: $sub-color;
+		border-radius: 7px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 0 6px;
+		cursor: pointer;
+	}
+	& .dish__details-add {
+		background-color: #F3BA00;
+		color: white;
+		font-size: 20px;
+		border-radius: 8px;
+		margin-right: 10px;
+		padding: 4px;
+		display: flex;
+		justify-content: center;
+		align-items: center	;
+		cursor: pointer;
+	}
+}

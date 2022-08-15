@@ -4,6 +4,7 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 /* eslint-disable */
 import {
+	GoogleAuthProvider,
 	getAuth,
 	signInWithPopup,
 	signInWithEmailAndPassword,
@@ -39,6 +40,30 @@ export const db = getFirestore(app);
 export const signInMail = async (email, password) => {
 	try {
 		await signInWithEmailAndPassword(auth, email, password);
+	} catch (error) {
+		console.error(error);
+		alert(error.message);
+	}
+};
+
+// Google sign in method
+// Bug currently check later----------------------------------------------------------------------------
+const googleProvider = new GoogleAuthProvider();
+export const signInWithGoogle = async () => {
+	try {
+		const res = await signInWithPopup(auth, googleProvider);
+		const user = res.user;
+		const q = query(collection(db, "users"), where("uid", "===", user.id));
+		const docs = await getDocs(q);
+		if (docs.docs.length === 0) {
+			await addDoc(collection(db, "users"), {
+				uid: user.uid,
+				name: user.displayName,
+				authProvider: "google",
+				email: user.email,
+				password: user.password,
+			});
+		}
 	} catch (error) {
 		console.error(error);
 		alert(error.message);

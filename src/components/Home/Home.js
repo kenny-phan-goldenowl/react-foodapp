@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "./Home.scss";
+import Dish from "./Dish";
 
 function Home() {
 	const [user, loading] = useAuthState(auth);
@@ -81,7 +82,7 @@ function Home() {
 					</div>
 					<div className='home__top-menu-right'>
 						{/* eslint-disable  */}
-						<img src={require('./cuate.png')} alt='dude cooking' />
+						<img src={require('./img/cuate.png')} alt='dude cooking' />
 						{/* eslint-enable  */}
 					</div>
 				</div>
@@ -100,20 +101,23 @@ function Home() {
 				</div>
 				<div className='home__middle-filters'>
 					<select name='dishes' id='dishes'>
+						<option value='' disabled selected hidden>
+							Filters
+						</option>
 						<option value='volvo'>Pizza</option>
 						<option value='saab'>Chicken</option>
 						<option value='mercedes'>Rice</option>
 						<option value='audi'>Drink</option>
 					</select>
 					<div className='home__middle-filters-dishes'>
-						<div className='dishes'>1</div>
-						<div className='dishes'>2</div>
-						<div className='dishes'>3</div>
-						<div className='dishes'>4</div>
-						<div className='dishes'>5</div>
-						<div className='dishes'>6</div>
-						<div className='dishes'>7</div>
-						<div className='dishes'>8</div>
+						<Dish />
+						<Dish />
+						<Dish />
+						<Dish />
+						<Dish />
+						<Dish />
+						<Dish />
+						<Dish />
 					</div>
 				</div>
 				<div className='home__middle-more'>
@@ -138,7 +142,7 @@ function Home() {
 							Contact
 						</Link>
 						<Link style={{ cursor: "pointer" }} className='item' to='/signIn'>
-							Log in
+							Login
 						</Link>
 					</div>
 					<div className='home__bottom-nav-icon'>
