@@ -1,14 +1,14 @@
 import "./Nav.scss";
 import { useNavigate } from "react-router-dom";
 
-function AuthNav() {
+function AuthNav({ bot }) {
 	const navigate = useNavigate();
 	const handleClick = () => {
 		navigate("/");
 	};
 
 	return (
-		<div className='navbar'>
+		<div style={{ bottom: bot ? 0 : null }} className='navbar'>
 			<p onClick={handleClick} className='navbar__logo'>
 				TBayEAT
 			</p>

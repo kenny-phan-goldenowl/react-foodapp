@@ -1,24 +1,29 @@
 import "./Dish.scss";
 
-function Dish() {
+function Dish({ name, price, rating, duration, discount }) {
 	return (
 		<div className='dish__container'>
-			<div className='dish__discount'>50%</div>
+			<div
+				style={{ visibility: discount ? "visible" : "hidden" }}
+				className='dish__discount'
+			>
+				{discount}%
+			</div>
 			<div className='dish__img'>
 				{/* eslint-disable  */}
-				<img src={require('./img/dish1.png')} alt='pizza img' />
+				<img src={require('./img/dish4.png')} alt='pizza img' />
 				{/* eslint-enable  */}
 			</div>
 			<div className='dish__details'>
 				<div className='dish__details-top'>
-					<p className='dish__details-name'>Home made pizza</p>
-					<p className='dish__details-price'>$19</p>
+					<p className='dish__details-name'>{name}</p>
+					<p className='dish__details-price'>${price}</p>
 				</div>
 				<div className='dish__details-bottom'>
 					<div className='dish__details-rating'>
-						<i className='bx bxs-star'></i> 4.7
+						<i className='bx bxs-star'></i> {rating}
 					</div>
-					<div className='dish__details-time'>50-79 min</div>
+					<div className='dish__details-time'>{duration} min</div>
 					<div className='dish__details-add'>
 						<i className='bx bx-plus'></i>
 					</div>

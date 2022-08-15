@@ -7,8 +7,8 @@ import "./Home.scss";
 import Dish from "./Dish";
 
 function Home() {
-	const [user, loading] = useAuthState(auth);
-	const [name, setName] = useState("");
+	const [user, loading] = useAuthState(auth); // get userCredential
+	const [name, setName] = useState(""); // userName
 	const navigate = useNavigate();
 
 	const fetchUserName = async () => {
@@ -110,14 +110,39 @@ function Home() {
 						<option value='audi'>Drink</option>
 					</select>
 					<div className='home__middle-filters-dishes'>
-						<Dish />
-						<Dish />
-						<Dish />
-						<Dish />
-						<Dish />
-						<Dish />
-						<Dish />
-						<Dish />
+						<Dish
+							name='Home made pizza'
+							price='19'
+							discount='50'
+							rating='4.7'
+							duration='50'
+						/>
+						<Dish
+							name='Home made pizza'
+							price='19'
+							rating='4.7'
+							duration='50'
+						/>
+						<Dish
+							name='Home made pizza'
+							price='19'
+							discount='50'
+							rating='4.7'
+							duration='50'
+						/>
+						<Dish
+							name='Home made pizza'
+							price='19'
+							rating='4.7'
+							duration='50'
+						/>
+						<Dish
+							name='Home made pizza'
+							price='19'
+							discount='50'
+							rating='4.7'
+							duration='50'
+						/>
 					</div>
 				</div>
 				<div className='home__middle-more'>

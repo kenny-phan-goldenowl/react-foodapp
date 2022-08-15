@@ -1,0 +1,122 @@
+$primary-color: #1AC073;
+$sub-color: #F0FAF7;
+
+.profile {
+	display: flex;
+	flex-direction: column;
+}
+
+.profile__middle {
+	height: 170vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	& img:first-child {
+		position: absolute;
+		right: 10vw;
+	}
+	& img:last-child {
+		position: absolute;
+		left: 14vw;
+		bottom: -20px;
+	}
+}
+
+.profile__middle-switch {
+	top: 90vh;
+	left: 40vw;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	& button {
+		font-size: 18px;
+		background-color: white;
+		font-family: "ABeeZee";
+		color: #929292;
+		border: 1px solid #F3BA00;
+		cursor: pointer;
+	}
+	& button:focus {
+		background-color: #F3BA00;
+		color: black;
+	}
+	& .btn1 {
+		border-radius: 10px 0 0 10px;
+		padding: 10px 50px;
+	}
+	& .btn2 {
+		border-radius: 0 10px 10px 0;
+		padding: 10px 20px;
+	}
+}
+
+.profile__middle-input {
+	position: relative;
+	bottom: 100px;
+	width: 40%;
+	align-self: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	color: $primary-color;
+	font-family: 'ABeeZee', sans-serif;
+	font-size: 25px;
+	& h1 {
+		text-align: center;
+		margin-bottom: 40px;
+	}
+	& input {
+		font-size: 20px;
+		border: none;
+		background-color: $sub-color;
+		padding: 20px 30px;
+		border-radius: 10px;
+		margin-bottom: 40px;
+	}
+	& input::placeholder {
+		color: $primary-color;
+		font-family: 'Lexend Deca';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 18px;
+	}
+	& input:focus {
+		outline: none;
+	}
+	& button {
+		background-color: $primary-color;
+		border: none;
+		padding: 20px;
+		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+		border-radius: 10px;
+		font-family: 'Lexend Deca', sans-serif;
+		font-style: normal;
+		font-weight: 400;
+		font-size: 18px;
+		color: white;
+		cursor: pointer;
+	}
+	& button:hover {
+		opacity: 0.8;
+	}
+}
+
+.profile__copyright {
+	height: 5vh;
+	background-color: $primary-color;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	& div {
+		background-color: white;
+		height: 1px;
+		width: 80%;
+		margin-bottom: 20px;
+	}
+	& p {
+		font-size: 12px;
+		color: white;
+		font-family: 'ABeeZee';
+		font-style: normal;
+	}
+}

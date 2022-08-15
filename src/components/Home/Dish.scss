@@ -30,7 +30,6 @@ $sub-color: #efefef;
 		flex-direction: column;
 		padding: 15px 12px;
 		border-radius: 0 0 10px 10px;
-		box-shadow: 0px 0px 1px rgba(187, 187, 187, 0.25);
 	}
 	& .dish__details-top {
 		display: flex;
@@ -65,7 +64,6 @@ $sub-color: #efefef;
 		justify-content: center;
 		align-items: center;
 		padding: 0 6px;
-		cursor: pointer;
 	}
 	& .dish__details-add {
 		background-color: #F3BA00;
@@ -78,5 +76,8 @@ $sub-color: #efefef;
 		justify-content: center;
 		align-items: center	;
 		cursor: pointer;
+	}
+	& .dish__details-add:hover, .dish__details-rating:hover {
+		opacity: 0.7;
 	}
 }
