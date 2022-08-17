@@ -242,7 +242,6 @@ function Home() {
 						<CartItem img={dish2} name='Chicken' price='30' qty='10' />
 						<CartItem img={dish3} name='Meat' price='20' qty='23' />
 						<CartItem img={dish8} name='Sauce' price='50' qty='4' />
-						<CartItem img={dish6} name='Bloom' price='40' qty='5' />
 					</div>
 					<div style={{ position: "relative", bottom: "40px" }}>
 						<div className='yourcart__popup-sub'>
