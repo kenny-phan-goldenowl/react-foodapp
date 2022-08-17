@@ -5,7 +5,6 @@ $sub-color: #F7F8FA;
 .home {
 	display: flex;
 	flex-direction: column;
-	background-color: black;
 }
 
 .home__top {
@@ -292,4 +291,116 @@ $sub-color: #F7F8FA;
 	color: white;
 	font-family: 'ABeeZee';
 	font-style: normal;
+}
+
+.yourcart {
+	position: absolute;
+	background: rgba(34, 34, 34, 0.3);
+	width: 100%;
+	height: 203.5%;
+	&__popup {
+		position: absolute;
+		right: 0;
+		background-color: white;
+		height: 97.9%;
+		width: 35vw;
+		display: flex;
+		flex-direction: column;
+		padding: 20px;
+		&-title {
+			text-align: center;
+			font-family: 'ABeeZee';
+			font-style: normal;
+			font-weight: 400;
+			font-size: 32px;
+			line-height: 38px;
+			text-transform: capitalize;
+			color: #1AC073;
+			margin-bottom: 25px;
+		}
+		& i {
+			color: #1AC073;
+			font-size: 30px;
+			cursor: pointer;
+			&:hover {
+				opacity: 0.8;
+			}
+		}
+		&-header {
+			position: relative;
+			display: flex;
+			justify-content: space-between;
+			font-family: 'Lexend Deca';
+			font-style: normal;
+			font-weight: 500;
+			font-size: 16px;
+			line-height: 20px;
+			color: #22262A;
+			&-qty {
+				position: relative;
+				left: 65px;
+			}
+			&-price {
+				position: relative;
+				left: 115px;
+			}
+		}
+		&-sub {
+			border-top: 1px solid black;
+			padding-top: 30px;
+			display: flex;
+			justify-content: space-between;
+			margin-top: 100px;
+			font-family: 'Poppins', sans-serif;
+			font-style: normal;
+			font-weight: 400;
+			font-size: 14px;
+			line-height: 21px;
+			color: #262626;
+		}
+		&-ship {
+			display: flex;
+			justify-content: space-between;
+			margin-top: 30px;
+			font-family: 'Poppins', sans-serif;
+			font-style: normal;
+			font-weight: 400;
+			font-size: 14px;
+			line-height: 21px;
+			color: #262626;
+		}
+		&-total {
+			display: flex;
+			justify-content: space-between;
+			padding-top: 20px;
+			margin-top: 30px;
+			border-top: 1px solid black;
+			font-family: 'Lexend Deca';
+			font-style: normal;
+			font-weight: 500;
+			font-size: 18px;
+			line-height: 22px;
+			color: #22262A;
+		}
+		&-button {
+			align-self: center;
+			background-color: #1AC073;
+			border: none;
+			margin-top: 15px;
+			border-radius: 15px;
+			width: 60%;
+			padding: 20px;
+			font-family: 'Lexend Deca';
+			font-style: normal;
+			font-weight: 800;
+			font-size: 24px;
+			line-height: 30px;
+			letter-spacing: -0.02em;
+			color: #FFFFFF;
+			cursor: pointer;
+			&:hover {
+				opacity: 0.8;
+			}
+		}
+	}
 }

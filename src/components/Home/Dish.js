@@ -1,6 +1,14 @@
 import "./Dish.scss";
+import dish1 from "./img/dish1.png";
 
-function Dish({ name, price, rating, duration, discount }) {
+function Dish({
+	img = dish1,
+	name = "Chicken",
+	price = "3.5",
+	rating = "5",
+	duration = "20",
+	discount,
+}) {
 	return (
 		<div className='dish__container'>
 			<div
@@ -11,7 +19,7 @@ function Dish({ name, price, rating, duration, discount }) {
 			</div>
 			<div className='dish__img'>
 				{/* eslint-disable  */}
-				<img src={require('./img/dish4.png')} alt='pizza img' />
+				<img src={img} alt='pizza img' />
 				{/* eslint-enable  */}
 			</div>
 			<div className='dish__details'>

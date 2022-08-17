@@ -2,12 +2,13 @@ $primary-color: #1AC073;
 $sub-color: #F0FAF7;
 
 .profile {
+	height: 100%;
 	display: flex;
 	flex-direction: column;
 }
 
 .profile__middle {
-	height: 170vh;
+	height: 190vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -52,8 +53,8 @@ $sub-color: #F0FAF7;
 
 .profile__middle-input {
 	position: relative;
-	bottom: 100px;
 	width: 40%;
+	top: 75vh;
 	align-self: center;
 	display: flex;
 	flex-direction: column;
@@ -118,5 +119,17 @@ $sub-color: #F0FAF7;
 		color: white;
 		font-family: 'ABeeZee';
 		font-style: normal;
+	}
+}
+
+.orderHistory {
+	position: relative;
+	align-self: center;
+	bottom: 10vh;
+	& h1 {
+		text-align: center;
+		color: $primary-color;
+		font-family: 'ABeeZee';
+		font-size: 45px;
 	}
 }

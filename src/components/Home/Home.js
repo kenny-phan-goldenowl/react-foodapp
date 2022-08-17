@@ -5,10 +5,22 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "./Home.scss";
 import Dish from "./Dish";
+import CartItem from "./CartItem";
+import {
+	dish1,
+	dish2,
+	dish3,
+	dish4,
+	dish5,
+	dish6,
+	dish7,
+	dish8,
+} from "./index";
 
 function Home() {
 	const [user, loading] = useAuthState(auth); // get userCredential
 	const [name, setName] = useState(""); // userName
+	const [cart, setCart] = useState(false);
 	const navigate = useNavigate();
 
 	const fetchUserName = async () => {
@@ -51,6 +63,9 @@ function Home() {
 						<Link className='item' to='/'>
 							Menu
 						</Link>
+						<Link className='item' to='/profile'>
+							Profile
+						</Link>
 						<Link style={{ cursor: "pointer" }} className='item' to='/'>
 							Contact
 						</Link>
@@ -60,7 +75,7 @@ function Home() {
 					</div>
 					<div className='home__top-nav-icon'>
 						<i className='bx bx-search'></i>
-						<i className='bx bx-shopping-bag'></i>
+						<i onClick={() => setCart(true)} className='bx bx-shopping-bag'></i>
 					</div>
 				</div>
 				<div className='home__top-menu'>
@@ -111,6 +126,7 @@ function Home() {
 					</select>
 					<div className='home__middle-filters-dishes'>
 						<Dish
+							img={dish1}
 							name='Home made pizza'
 							price='19'
 							discount='50'
@@ -118,12 +134,14 @@ function Home() {
 							duration='50'
 						/>
 						<Dish
+							img={dish2}
 							name='Home made pizza'
 							price='19'
 							rating='4.7'
 							duration='50'
 						/>
 						<Dish
+							img={dish3}
 							name='Home made pizza'
 							price='19'
 							discount='50'
@@ -131,12 +149,38 @@ function Home() {
 							duration='50'
 						/>
 						<Dish
+							img={dish4}
 							name='Home made pizza'
 							price='19'
 							rating='4.7'
 							duration='50'
 						/>
 						<Dish
+							img={dish5}
+							name='Home made pizza'
+							price='19'
+							discount='50'
+							rating='4.7'
+							duration='50'
+						/>
+						<Dish
+							img={dish6}
+							name='Home made pizza'
+							price='19'
+							discount='50'
+							rating='4.7'
+							duration='50'
+						/>
+						<Dish
+							img={dish7}
+							name='Home made pizza'
+							price='19'
+							discount='50'
+							rating='4.7'
+							duration='50'
+						/>
+						<Dish
+							img={dish8}
 							name='Home made pizza'
 							price='19'
 							discount='50'
@@ -177,6 +221,45 @@ function Home() {
 				</div>
 				<div className='home__bottom-line'></div>
 				<div className='home__bottom-copyright'>Copyright @2022 TBayEAT</div>
+			</div>
+			<div
+				style={{ visibility: cart ? "visible" : "hidden" }}
+				className='yourcart'
+			>
+				<div className='yourcart__popup'>
+					<i onClick={() => setCart(false)} className='bx bx-x'></i>
+					<h3 className='yourcart__popup-title'>Your Cart</h3>
+					<div className='yourcart__popup-header'>
+						<p>PRODUCT</p>
+						<p className='yourcart__popup-header-price'>PRICE</p>
+						<p className='yourcart__popup-header-qty'>QTY</p>
+						<p>
+							UNIT <br /> PRICE
+						</p>
+					</div>
+					<div className='yourcart__popup-item'>
+						<CartItem />
+						<CartItem img={dish2} name='Chicken' price='30' qty='10' />
+						<CartItem img={dish3} name='Meat' price='20' qty='23' />
+						<CartItem img={dish8} name='Sauce' price='50' qty='4' />
+						<CartItem img={dish6} name='Bloom' price='40' qty='5' />
+					</div>
+					<div style={{ position: "relative", bottom: "40px" }}>
+						<div className='yourcart__popup-sub'>
+							<p>Subtotal</p>
+							<p>$99.8</p>
+						</div>
+						<div className='yourcart__popup-ship'>
+							<p>Shipping fee</p>
+							<p>$20</p>
+						</div>
+						<div className='yourcart__popup-total'>
+							<p>TOTAL</p>
+							<p>$118</p>
+						</div>
+					</div>
+					<button className='yourcart__popup-button'>Go to Payment</button>
+				</div>
 			</div>
 		</div>
 	);
