@@ -1,0 +1,153 @@
+$primary-color: #1AC073;
+$sub-color: #F0FAF7;
+
+.signin__form {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'ABeeZee', sans-serif;
+	color: $primary-color;
+	height: 100vh;
+}
+
+.signin {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 40%;
+	& h1, h4, p {
+		text-align: center;
+	}
+}
+
+.signin__title {
+	position: relative;
+	top: -25px;
+	font-size: 64px;
+	font-weight: 300;
+}
+
+.signin__subtitle {
+	position: relative;
+	bottom: 25px;
+	font-size: 16px;
+	font-weight: 300;
+	font-style: normal;
+	margin: 20px 0 50px 0;
+}
+
+.signin input[type="text"], .signin input[type="password"] {
+	background-color: $sub-color;
+	border: none;
+	border-radius: 10px;
+	font-size: 20px;
+	padding: 20px;
+}
+
+.signin input[type="password"] {
+	margin: 40px 0 35px 0;
+}
+
+.signin input::placeholder {
+	color: $primary-color;
+}
+
+.signin__verify {
+	display: flex;
+	justify-content: space-between;
+	font-style: italic;
+	font-size: 18px;
+	font-weight: 400;
+	margin-bottom: 20px;
+}
+
+.signin input[type=checkbox] {
+	position: relative;
+	left: 10px;
+    transform: scale(2.5);
+	appearance: none;
+	width: 15px;
+	height: 15px;
+	background-color: $sub-color;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.signin input[type=checkbox]:hover {
+	opacity: 0.8;
+
+}
+
+.signin input[type=checkbox]:checked {
+	appearance: checkbox;
+}
+
+.signin__button {
+	background-color: $primary-color;
+	color: white;
+	border: none;
+	border-radius: 10px;
+	font-weight: 400;
+	font-size: 18px;
+	height: 62px;
+	padding: 20px;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+	cursor: pointer;
+}
+
+.signin__button:hover {
+	opacity: 0.9;
+}
+
+.signin__social-login {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 35px;
+	& p {
+		font-size: 18px;
+		font-style: italic;
+		margin-bottom: 25px;
+	}
+	& .signin__logo {
+		display: flex;
+		flex-direction: row;
+		width: 150px;
+		justify-content: space-between;
+	}
+	& .signin__logo div {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 60px;
+		height: 60px;
+		border-radius: 15px;
+		background-color: $sub-color;
+	}
+	& .signin__logo i {
+		cursor: pointer;
+		font-size: 30px;
+		color: blue;
+	}
+}
+
+.signin__signup {
+	text-decoration: none;
+	&.signin__signup:hover {
+		color: red;
+	}
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+}
+
+.reset {
+	font-family: 'ABeeZee', sans-serif;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: calc(100vh - 80px) ;
+}
