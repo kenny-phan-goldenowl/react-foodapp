@@ -15,9 +15,9 @@ $sub-color: #F7F8FA;
 }
 
 .home__top-nav {
-	flex-grow: 2;
 	display: flex;
 	justify-content: space-between;
+	padding: 20px 0;
 }
 
 .home__top-nav-logo {
@@ -338,19 +338,19 @@ $sub-color: #F7F8FA;
 			color: #22262A;
 			&-qty {
 				position: relative;
-				left: 65px;
+				left: 100px;
 			}
 			&-price {
 				position: relative;
-				left: 115px;
+				left: 200px;
 			}
 		}
 		&-sub {
-			border-top: 1px solid black;
-			padding-top: 30px;
+			border-top: 1px solid rgb(231, 231, 231);
+			padding-top: 20px;
 			display: flex;
 			justify-content: space-between;
-			margin-top: 100px;
+			margin-top: 80px;
 			font-family: 'Poppins', sans-serif;
 			font-style: normal;
 			font-weight: 400;
