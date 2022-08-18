@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 function Payment() {
   const [toggle, setToggle] = useState(false);
+  const [current, setCurrent] = useState(0);
 
   return (
     <div>
@@ -80,13 +81,19 @@ function Payment() {
               <p>$118</p>
             </div>
             <button
-              onClick={() => setToggle(true)}
+              onClick={() => {
+                setToggle(true);
+                setCurrent(1);
+              }}
               className='payment__total-result-btn1'
             >
 							Pay your Portion: $20
             </button>
             <button
-              onClick={() => setToggle(true)}
+              onClick={() => {
+                setToggle(true);
+                setCurrent(1);
+              }}
               className='payment__total-result-btn2'
             >
 							Pay All: $118
@@ -107,46 +114,105 @@ function Payment() {
       >
         <div className='payment__charge-form'>
           <div className='payment__charge-form-icon'>
-            <i className='bx bx-left-arrow-alt'></i>
-            <i onClick={() => setToggle(false)} className='bx bx-x'></i>
+            <i
+              onClick={() => {
+                setCurrent((prev) => prev - 1);
+                if (current === 1) setToggle(false);
+              }}
+              className='bx bx-left-arrow-alt'
+            ></i>
+            <i
+              onClick={() => {
+                setToggle(false);
+                setCurrent(0);
+              }}
+              className='bx bx-x'
+            ></i>
           </div>
           <h1 className='payment__charge-form-title'>Make Payment</h1>
           <div className='payment__charge-form-current'>
             <div className='payment__charge-form-current-page'>
-              <p className='page'>1</p>
+              <p
+                className='page'
+                style={{ background: current >= 1 ? '#1AC073' : '#DFDEDE' }}
+              >
+								1
+              </p>
               <div className='line'></div>
-              <p className='page'>2</p>
+              <p
+                style={{ background: current >= 2 ? '#1AC073' : '#DFDEDE' }}
+                className='page'
+              >
+								2
+              </p>
               <div className='line'></div>
-              <p className='page'>3</p>
+              <p
+                style={{ background: current >= 3 ? '#1AC073' : '#DFDEDE' }}
+                className='page'
+              >
+								3
+              </p>
             </div>
           </div>
-          <div className='payment__charge-form-info'>
+          {/*--------------------------Page 1--------------------------*/}
+          <div
+            style={{ visibility: current === 1 ? 'visible' : 'hidden' }}
+            className='payment__charge-form-info'
+          >
             <div className='payment__charge-form-info-left'>
               <input type='text' placeholder='First Name' />
               <input type='text' placeholder='Email Address' />
               <h2>Select Method Of Payment</h2>
               <div>
                 <div className='item'>
-                  <label>Credit Card Or Debit</label>
+                  <label>
+                    {' '}
+                    <span>
+                      <i className='bx bxs-credit-card'></i>
+                    </span>{' '}
+										Credit Card Or Debit
+                  </label>
                   <input type='checkbox' />
                 </div>
                 <div className='item'>
-                  <label>Paypal</label>
+                  <label>
+                    {' '}
+                    <span>
+                      <i className='bx bxl-paypal'></i>
+                    </span>{' '}
+										Paypal
+                  </label>
                   <input type='checkbox' />
                 </div>
                 <div className='item'>
-                  <label>Bank Transfer</label>
+                  <label>
+                    {' '}
+                    <span>
+                      <i className='bx bxs-bank'></i>
+                    </span>{' '}
+										Bank Transfer
+                  </label>
                   <input type='checkbox' />
                 </div>
               </div>
             </div>
             <div className='payment__charge-form-info-right'>
               <input type='text' placeholder='Last Name' />
-              <input type='text' placeholder='Address for Delivery' />
-              <input type='text' placeholder='Mobile Phone' />
+              <input
+                className='payment__charge-form-info-right-address'
+                type='text'
+                placeholder='Address for Delivery'
+              />
+              <input
+                className='payment__charge-form-info-right-phone'
+                type='text'
+                placeholder='Mobile Phone'
+              />
             </div>
           </div>
-          <button>Go to Payment</button>
+          <div className='payment__charge-form-info-button'>
+            <button>Go to Payment</button>
+          </div>
         </div>
       </div>
     </div>

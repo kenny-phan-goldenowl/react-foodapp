@@ -191,10 +191,14 @@ $sub-color: #F7F8FA;
 					letter-spacing: -0.02em;
 					color: #FFFFFF;
 					text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
+					cursor: pointer;
 					& .page {
 						background-color: #DFDEDE;
 						padding: 9px 15px;
 						border-radius: 50%;
+						&:hover {
+							opacity: 0.8;
+						}
 					}
 					& .line {
 						position: relative;
@@ -209,16 +213,114 @@ $sub-color: #F7F8FA;
 				margin-top: 30px;
 				display: flex;
 				justify-content: space-between;
-				background-color: red;
-				padding: 0 30px;
+				padding: 0 80px;
+				height: 450px;
 				&-left {
 					display: flex;
 					flex-direction: column;
-					height: 300px;
+					justify-content: space-between;
+					& input[type="text"] {
+						padding: 15px;
+						border: none;
+						border-radius: 10px;
+						background-color: $sub-color;
+						font-size: 20px;
+						width: 130%;
+						&:focus {
+							outline: none;
+						}
+					}
+					& h2 {
+						font-family: 'Lexend Deca';
+						font-style: normal;
+						font-weight: 600;
+						font-size: 20px;
+						line-height: 25px;
+						display: flex;
+						align-items: flex-end;
+						text-transform: capitalize;
+						color: #1AC073;
+					}
+					& .item {
+						margin-top: 20px;
+						padding: 15px;
+						width: 130%;
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						font-family: 'Lexend Deca';
+						font-style: normal;
+						font-weight: 700;
+						font-size: 12px;
+						line-height: 150%;
+						letter-spacing: 0.5px;
+						color: #223263;
+						background-color: #F0FAF7;
+						& input[type="checkbox"] {
+							width: 25px;
+							height: 25px;
+						}
+						& label {
+							display: flex;
+							justify-content: center;
+							align-items: center;
+						}
+						& i {
+							font-size: 25px;
+							margin-right: 10px;
+							color: #1AC073;
+						}
+					}
 				}
 				&-right {
 					display: flex;
 					flex-direction: column;
+					width: 45%;
+					justify-content: space-between;
+					& input[type="text"] {
+						padding: 15px;
+						border: none;
+						border-radius: 10px;
+						background-color: $sub-color;
+						font-size: 20px;
+						&:focus {
+							outline: none;
+						}
+					}
+					&-address {
+						position: relative;
+						bottom: 40px;
+						height: 150px;
+					}
+					&-phone {
+						position: relative;
+						bottom: 80px;
+					}
+				}
+				&-button {
+					margin-top: 40px;
+					display: flex;
+					justify-content: center;
+					& button {
+						font-family: 'Lexend Deca';
+						font-style: normal;
+						font-weight: 800;
+						font-size: 24px;
+						line-height: 30px;
+						display: flex;
+						align-items: center;
+						text-align: center;
+						letter-spacing: -0.02em;
+						color: #FFFFFF;
+						background-color: #1AC073;
+						padding: 20px 80px;
+						border: none;
+						border-radius: 10px;
+						cursor: pointer;
+						&:hover {
+							opacity: 0.8;
+						}
+					}
 				}
 			}
 		}
