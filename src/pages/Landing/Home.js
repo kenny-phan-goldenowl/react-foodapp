@@ -58,7 +58,7 @@ function Home() {
             <Link className='item' to='/'>
 							Home
             </Link>
-            <Link className='item' to='/payment'>
+            <Link className='item' to='/'>
 							About
             </Link>
             <Link className='item' to='/'>

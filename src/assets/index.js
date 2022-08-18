@@ -7,6 +7,7 @@ import dish6 from './img/dish6.png';
 import dish7 from './img/dish7.png';
 import dish8 from './img/dish8.png';
 import background from './img/cuate.png';
+import truck from './img/background.png';
 import burger from './img/burger1.png';
 import avatar from './img/avatar.png';
 import visa from './img/visa.png';
@@ -24,4 +25,5 @@ export {
   burger,
   avatar,
   visa,
+  truck,
 };

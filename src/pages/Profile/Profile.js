@@ -2,7 +2,7 @@ import NavBar from 'components/Navbar/NavBar';
 import './style.scss';
 import { useState } from 'react';
 import Bill from 'components/Bill/Bill';
-import { background, avatar } from 'assets/index';
+import { truck, avatar } from 'assets/index';
 
 function Profile() {
   const [toggle, setToggle] = useState(true);
@@ -11,7 +11,7 @@ function Profile() {
       <NavBar icon1='bx bx-search' icon2='bx bx-shopping-bag' />
       <div className='profile__middle'>
         <div className='profile__middle-img'>
-          <img className='img1' src={background} alt='background img' />
+          <img className='img1' src={truck} alt='background img' />
           <img className='img2' src={avatar} alt='avatar img' />
         </div>
         <div className='profile__middle-switch'>
