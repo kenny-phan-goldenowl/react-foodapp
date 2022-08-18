@@ -220,12 +220,19 @@ $sub-color: #F7F8FA;
 					flex-direction: column;
 					justify-content: space-between;
 					& input[type="text"] {
+						width: 130%;
 						padding: 15px;
 						border: none;
 						border-radius: 10px;
 						background-color: $sub-color;
 						font-size: 20px;
-						width: 130%;
+						font-family: 'Lexend Deca';
+						font-style: normal;
+						font-weight: 400;
+						font-size: 16px;
+						line-height: 20px;
+						letter-spacing: -0.02em;
+						color: #999999;
 						&:focus {
 							outline: none;
 						}
@@ -255,7 +262,6 @@ $sub-color: #F7F8FA;
 						line-height: 150%;
 						letter-spacing: 0.5px;
 						color: #223263;
-						background-color: #F0FAF7;
 						& input[type="checkbox"] {
 							width: 25px;
 							height: 25px;
@@ -321,6 +327,104 @@ $sub-color: #F7F8FA;
 							opacity: 0.8;
 						}
 					}
+				}
+			}
+			&-visa {
+				box-sizing: border-box;
+				position: absolute;
+				display: flex;
+				width: 60vw;
+				justify-content: space-between;
+				align-items: center;
+				bottom: 120vh;
+				&-img {
+					position: relative;
+					left: 100px;
+				}
+				&-info {
+					position: relative;
+					top: 50px;
+					right: 100px;
+					height: 300px;
+					width: 400px;
+					padding: 20px;
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+					& .expire {
+						display: flex;
+						& .item {
+							width: 160px;
+							margin-right: 20px;
+						}
+					}
+					& input[type="text"] {
+						padding: 15px;
+						border: none;
+						border-radius: 10px;
+						background-color: $sub-color;
+						font-size: 20px;
+						font-family: 'Lexend Deca';
+						font-style: normal;
+						font-weight: 400;
+						font-size: 16px;
+						line-height: 20px;
+						letter-spacing: -0.02em;
+						color: #999999;
+						&:focus {
+							outline: none;
+						}
+					}
+				}
+				& .confirm {
+					display: flex;
+					align-items: center;
+					& p {
+						margin-left: 10px;
+						font-family: 'Lexend Deca';
+						font-style: normal;
+						font-weight: 400;
+						font-size: 14px;
+						line-height: 19px;
+						color: #999999;
+					}
+					& input[type="checkbox"] {
+						height: 20px;
+						width: 20px;
+					}
+				}
+			}
+			&-success {
+				position: absolute;
+				right: 46vw;
+				bottom: 130vh;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				& div {
+					width: 130px;
+					height: 130px;
+					background-color: #1AC073;
+					border-radius: 55px;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					margin-bottom: 30px;
+					box-shadow: 0px 10px 30px rgba(64, 191, 255, 0.24);
+					& i {
+						font-size: 70px;
+						color: white;
+					}
+				}
+				& p {
+					font-family: 'Lexend Deca';
+					font-style: normal;
+					font-weight: 700;
+					font-size: 24px;
+					line-height: 150%;
+					letter-spacing: 0.5px;
+					color: #223263;
 				}
 			}
 		}

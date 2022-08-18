@@ -1,12 +1,13 @@
 import NavBar from 'components/Navbar/NavBar';
 import './style.scss';
 import CartItem from 'components/CartItem/CartItem';
-import { background, dish2, dish3, dish8 } from 'assets/index';
+import { background, dish2, dish3, dish8, visa } from 'assets/index';
 import { useState } from 'react';
 
 function Payment() {
   const [toggle, setToggle] = useState(false);
   const [current, setCurrent] = useState(0);
+  const [check, setCheck] = useState(1);
 
   return (
     <div>
@@ -135,6 +136,7 @@ function Payment() {
               <p
                 className='page'
                 style={{ background: current >= 1 ? '#1AC073' : '#DFDEDE' }}
+                onClick={() => setCurrent(1)}
               >
 								1
               </p>
@@ -142,6 +144,7 @@ function Payment() {
               <p
                 style={{ background: current >= 2 ? '#1AC073' : '#DFDEDE' }}
                 className='page'
+                onClick={() => setCurrent(2)}
               >
 								2
               </p>
@@ -149,6 +152,7 @@ function Payment() {
               <p
                 style={{ background: current >= 3 ? '#1AC073' : '#DFDEDE' }}
                 className='page'
+                onClick={() => setCurrent(3)}
               >
 								3
               </p>
@@ -164,7 +168,10 @@ function Payment() {
               <input type='text' placeholder='Email Address' />
               <h2>Select Method Of Payment</h2>
               <div>
-                <div className='item'>
+                <div
+                  style={{ backgroundColor: check === 1 ? '#F0FAF7' : 'white' }}
+                  className='item'
+                >
                   <label>
                     {' '}
                     <span>
@@ -172,9 +179,16 @@ function Payment() {
                     </span>{' '}
 										Credit Card Or Debit
                   </label>
-                  <input type='checkbox' />
+                  <input
+                    checked={check === 1}
+                    onChange={() => setCheck(1)}
+                    type='checkbox'
+                  />
                 </div>
-                <div className='item'>
+                <div
+                  style={{ backgroundColor: check === 2 ? '#F0FAF7' : 'white' }}
+                  className='item'
+                >
                   <label>
                     {' '}
                     <span>
@@ -182,9 +196,16 @@ function Payment() {
                     </span>{' '}
 										Paypal
                   </label>
-                  <input type='checkbox' />
+                  <input
+                    checked={check === 2}
+                    onChange={() => setCheck(2)}
+                    type='checkbox'
+                  />
                 </div>
-                <div className='item'>
+                <div
+                  style={{ backgroundColor: check === 3 ? '#F0FAF7' : 'white' }}
+                  className='item'
+                >
                   <label>
                     {' '}
                     <span>
@@ -192,7 +213,11 @@ function Payment() {
                     </span>{' '}
 										Bank Transfer
                   </label>
-                  <input type='checkbox' />
+                  <input
+                    checked={check === 3}
+                    onChange={() => setCheck(3)}
+                    type='checkbox'
+                  />
                 </div>
               </div>
             </div>
@@ -210,8 +235,46 @@ function Payment() {
               />
             </div>
           </div>
+          {/*--------------------------Page 2--------------------------*/}
+          <div
+            style={{ visibility: current === 2 ? 'visible' : 'hidden' }}
+            className='payment__charge-form-visa'
+          >
+            <div className='payment__charge-form-visa-img'>
+              <img src={visa} alt='visa img' />
+            </div>
+            <form className='payment__charge-form-visa-info'>
+              <input type='text' placeholder='Card Number' />
+              <div className='expire'>
+                <input className='item' type='text' placeholder='Expiry' />
+                <input className='item' type='text' placeholder='CVV' />
+              </div>
+              <input type='text' placeholder='Holder Number' />
+              <div className='confirm'>
+                <input type='checkbox' />
+                <p>Save this credit card</p>
+              </div>
+            </form>
+          </div>
+          {/*--------------------------Page 3--------------------------*/}
+          <div
+            style={{ visibility: current === 3 ? 'visible' : 'hidden' }}
+            className='payment__charge-form-success'
+          >
+            <div>
+              <i className='bx bx-check'></i>
+            </div>
+            <p>Success</p>
+          </div>
           <div className='payment__charge-form-info-button'>
-            <button>Go to Payment</button>
+            <button
+              onClick={() => {
+                setCurrent((prev) => prev + 1);
+                if (current === 3) setToggle(false);
+              }}
+            >
+							Confirm
+            </button>
           </div>
         </div>
       </div>

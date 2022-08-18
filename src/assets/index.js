@@ -9,6 +9,7 @@ import dish8 from './img/dish8.png';
 import background from './img/cuate.png';
 import burger from './img/burger1.png';
 import avatar from './img/avatar.png';
+import visa from './img/visa.png';
 
 export {
   dish1,
@@ -22,4 +23,5 @@ export {
   background,
   burger,
   avatar,
+  visa,
 };

@@ -71,10 +71,13 @@ function Home() {
 							Contact
             </Link>
             <Link style={{ cursor: 'pointer' }} className='item' to='/signIn'>
-							Log in
+							Login
             </Link>
           </div>
           <div className='home__top-nav-icon'>
+            <p style={{ color: 'white', fontSize: '20px', marginRight: 50 }}>
+							Hello {name}
+            </p>
             <i className='bx bx-search'></i>
             <i onClick={() => setCart(true)} className='bx bx-shopping-bag'></i>
           </div>
