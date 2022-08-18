@@ -1,23 +1,69 @@
-
 {
-    "env": {
-        "browser": true,
-        "es2021": true
-    },
-    "extends": ["eslint:recommended", "plugin:react/recommended", "prettier"],
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": "latest",
-        "sourceType": "module"
-    },
-    "plugins": ["react"],
-    "rules": {
-        "indent": ["warn", "tab"],
-        "quotes": ["error", "double"],
-        "semi": ["error", "always"],
+	"env": {
+		"browser": true,
+		"es2021": true
+	},
+	"extends": [
+		"plugin:react/recommended",
+		"eslint:recommended",
+		"prettier"
+	],
+	"parserOptions": {
+		"ecmaFeatures": {
+		"jsx": true
+		},
+		"ecmaVersion": 11,
+		"sourceType": "module"
+	},
+	"plugins": [
+		"react"
+	],
+	"rules": {
 		"react/react-in-jsx-scope": "off",
-		"react/prop-types": "off"
-    }
+		"react/prefer-stateless-function": 0,
+		"linebreak-style": 0,
+		"jsx-a11y/heading-has-content": 0,
+		"jsx-a11y/href-no-hash": 0,
+		"jsx-a11y/anchor-is-valid": 0,
+		"no-underscore-dangle": 0,
+		"react/no-find-dom-node": 0,
+		"react/prop-types": 0,
+		"no-nested-ternary": 0,
+		"react/display-name": 0,
+		"no-multiple-empty-lines": [
+			"error",
+			{
+				"max": 1,
+				"maxEOF": 1,
+				"maxBOF": 1
+			}
+		],
+		"key-spacing": [
+		2,
+			{
+				"singleLine": {
+				"beforeColon": false,
+				"afterColon": true
+				},
+				"multiLine": {
+				"beforeColon": false,
+				"afterColon": true,
+				"align": "colon"
+				}
+			}
+		],
+		"quotes": [
+			2,
+			"single",
+			"avoid-escape"
+		],
+		"indent": [
+			"error",
+			2
+		],
+		"jsx-quotes": [
+			"error",
+			"prefer-single"
+		]
+	}
 }
