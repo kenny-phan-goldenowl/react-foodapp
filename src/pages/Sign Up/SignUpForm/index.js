@@ -1,8 +1,10 @@
-import './style.scss';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
+
 import { auth, signUpMail } from 'services/firebase';
-import { useAuthState } from 'react-firebase-hooks/auth';
+
+import '../style.scss';
 
 function SignUpForm() {
   const navigate = useNavigate();

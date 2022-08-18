@@ -1,8 +1,10 @@
-import NavBar from 'components/Navbar/NavBar';
-import './style.scss';
 import { useState } from 'react';
+
 import Bill from 'components/Bill/Bill';
-import { truck, avatar } from 'assets/index';
+import NavBar from 'components/Navbar/NavBar';
+import { truck, avatar } from 'assets';
+
+import './style.scss';
 
 function Profile() {
   const [toggle, setToggle] = useState(true);

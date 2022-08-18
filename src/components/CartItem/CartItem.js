@@ -1,6 +1,6 @@
+import { dish1 } from 'assets';
+
 import './style.scss';
-import { dish1 } from 'assets/index';
-import { useState } from 'react';
 
 function CartItem({
   img = dish1,
@@ -9,9 +9,9 @@ function CartItem({
   userName = 'you',
   price = 10,
   qty = 2,
+  add,
+  minus,
 }) {
-  const [count, setCount] = useState(qty);
-
   return (
     <div className='cart-item'>
       <div className='cart-item__details'>
@@ -25,18 +25,12 @@ function CartItem({
         </div>
       </div>
       <div className='cart-item__add'>
-        <p className='cart-item__total-price'>${price * count}</p>
+        <p className='cart-item__total-price'>${price * qty}</p>
         <div className='cart-item__add-adjust'>
           <div className='cart-item__add-adjust-qty'>
-            <i
-              onClick={() => setCount((prev) => prev - 1)}
-              className='bx bx-minus'
-            ></i>
-            {count}
-            <i
-              onClick={() => setCount((prev) => prev + 1)}
-              className='bx bx-plus'
-            ></i>
+            <i onClick={minus} className='bx bx-minus'></i>
+            {qty}
+            <i onClick={add} className='bx bx-plus'></i>
           </div>
           <button>Remove Item</button>
         </div>

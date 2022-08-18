@@ -1,11 +1,12 @@
 import { Routes, Route } from 'react-router-dom';
-import SignInPage from 'pages/Login/SignInPage';
-import SignUpPage from 'pages/Signin/SignUpPage';
-import ResetPassword from 'pages/Login/ResetPassword';
-import Profile from 'pages/Profile/Profile';
-import Payment from 'pages/Payment/Payment';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Home from 'pages/Landing/Home';
+
+import SignInPage from 'pages/Login/index';
+import SignUpPage from 'pages/Sign Up/index';
+import ResetPassword from 'pages/Login/index';
+import Profile from 'pages/Profile/index';
+import Payment from 'pages/Payment/index';
+import Home from 'pages/Landing';
 
 function App() {
   return (

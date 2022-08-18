@@ -1,9 +1,11 @@
-import AuthNav from 'components/Navbar/Nav';
-import './style.scss';
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
+
 import { auth, sendPasswordReset } from 'services/firebase';
+import AuthNav from 'components/Navbar/Nav';
+
+import './style.scss';
 
 function ResetPassword() {
   const [email, setMail] = useState('');

@@ -1,8 +1,10 @@
-import NavBar from 'components/Navbar/NavBar';
-import './style.scss';
-import CartItem from 'components/CartItem/CartItem';
-import { background, dish2, dish3, dish8, visa } from 'assets/index';
 import { useState } from 'react';
+
+import NavBar from 'components/Navbar/NavBar';
+import CartItem from 'components/CartItem/CartItem';
+import { background, dish2, dish3, dish8, visa } from 'assets';
+
+import './style.scss';
 
 function Payment() {
   const [toggle, setToggle] = useState(false);

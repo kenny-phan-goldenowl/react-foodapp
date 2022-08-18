@@ -1,4 +1,5 @@
 import AuthNav from 'components/Navbar/Nav';
+
 import SignUpForm from './SignUpForm';
 
 function SignUpPage() {

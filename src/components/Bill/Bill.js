@@ -1,5 +1,6 @@
+import { burger } from 'assets';
+
 import './style.scss';
-import { burger } from 'assets/index';
 
 function Item({ name, price, details, quantity }) {
   return (

@@ -1,4 +1,5 @@
 import { useNavigate, Link } from 'react-router-dom';
+
 import './style.scss';
 
 function NavBar({ icon1, icon2 }) {

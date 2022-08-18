@@ -1,5 +1,6 @@
-import './style.scss';
 import { useNavigate } from 'react-router-dom';
+
+import './style.scss';
 
 function AuthNav({ bot }) {
   const navigate = useNavigate();

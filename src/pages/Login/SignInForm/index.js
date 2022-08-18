@@ -1,8 +1,10 @@
-import './style.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+
 import { auth, signInMail, signInWithGoogle } from 'services/firebase';
+
+import '../style.scss';
 
 function SignInForm() {
   const navigate = useNavigate();

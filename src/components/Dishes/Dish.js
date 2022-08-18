@@ -1,5 +1,6 @@
+import { dish1 } from 'assets';
+
 import './style.scss';
-import { dish1 } from 'assets/index';
 
 function Dish({
   img = dish1,

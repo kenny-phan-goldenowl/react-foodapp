@@ -1,9 +1,9 @@
-import { auth, db, logout } from 'services/firebase';
 import { query, collection, getDocs, where } from 'firebase/firestore';
 import { useNavigate, Link } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import './style.scss';
+
+import { auth, db, logout } from 'services/firebase';
 import Dish from 'components/Dishes/Dish';
 import CartItem from 'components/CartItem/CartItem';
 import {
@@ -18,10 +18,13 @@ import {
   background,
 } from '../../assets/index';
 
+import './style.scss';
+
 function Home() {
   const [user, loading] = useAuthState(auth); // get userCredential
   const [name, setName] = useState(''); // userName
   const [cart, setCart] = useState(false);
+  const [count, setCount] = useState(2);
   const navigate = useNavigate();
 
   const fetchUserName = async () => {
@@ -35,6 +38,10 @@ function Home() {
       alert('Error while fetching data');
     }
   };
+
+  const add = () => setCount((prev) => prev + 1);
+
+  const minus = () => setCount((prev) => prev - 1);
 
   useEffect(() => {
     if (loading) return;
@@ -240,16 +247,22 @@ function Home() {
             </p>
           </div>
           <div className='yourcart__popup-item'>
-            <CartItem />
             <CartItem
-              img={dish2}
-              name='Chicken'
-              userName='Kenny'
-              price='30'
-              qty='10'
+              img={dish3}
+              name='Meat'
+              price='20'
+              qty={count}
+              add={add}
+              minus={minus}
             />
-            <CartItem img={dish3} name='Meat' price='20' qty='23' />
-            <CartItem img={dish8} name='Sauce' price='50' qty='4' />
+            <CartItem
+              img={dish6}
+              name='Chicken'
+              price='20'
+              qty='5'
+              add={add}
+              minus={minus}
+            />
           </div>
           <div style={{ position: 'relative', bottom: '40px' }}>
             <div className='yourcart__popup-sub'>
