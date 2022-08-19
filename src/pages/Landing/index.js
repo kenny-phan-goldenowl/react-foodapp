@@ -6,17 +6,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db, logout } from 'services/firebase';
 import Dish from 'components/Dishes/Dish';
 import CartItem from 'components/CartItem/CartItem';
-import {
-  dish1,
-  dish2,
-  dish3,
-  dish4,
-  dish5,
-  dish6,
-  dish7,
-  dish8,
-  background,
-} from '../../assets/index';
+import { dish6, dish3, background } from '../../assets/index';
 
 import './style.scss';
 
@@ -25,6 +15,7 @@ function Home() {
   const [name, setName] = useState(''); // userName
   const [cart, setCart] = useState(false);
   const [count, setCount] = useState(2);
+  const [count1, setCount1] = useState(5);
   const navigate = useNavigate();
 
   const fetchUserName = async () => {
@@ -38,10 +29,6 @@ function Home() {
       alert('Error while fetching data');
     }
   };
-
-  const add = () => setCount((prev) => prev + 1);
-
-  const minus = () => setCount((prev) => prev - 1);
 
   useEffect(() => {
     if (loading) return;
@@ -82,9 +69,6 @@ function Home() {
             </Link>
           </div>
           <div className='home__top-nav-icon'>
-            <p style={{ color: 'white', fontSize: '20px', marginRight: 50 }}>
-							Hello {name}
-            </p>
             <i className='bx bx-search'></i>
             <i onClick={() => setCart(true)} className='bx bx-shopping-bag'></i>
           </div>
@@ -135,7 +119,7 @@ function Home() {
           </select>
           <div className='home__middle-filters-dishes'>
             <Dish
-              img={dish1}
+              img={dish3}
               name='Home made pizza'
               price='19'
               discount='50'
@@ -143,13 +127,13 @@ function Home() {
               duration='50'
             />
             <Dish
-              img={dish2}
+              img={dish6}
               name='Home made pizza'
               price='19'
               rating='4.7'
               duration='50'
             />
-            <Dish
+            {/*<Dish
               img={dish3}
               name='Home made pizza'
               price='19'
@@ -195,7 +179,7 @@ function Home() {
               discount='50'
               rating='4.7'
               duration='50'
-            />
+            />*/}
           </div>
         </div>
         <div className='home__middle-more'>
@@ -251,17 +235,17 @@ function Home() {
               img={dish3}
               name='Meat'
               price='20'
-              qty={count}
-              add={add}
-              minus={minus}
+              qty={count1}
+              add={() => setCount1((prev) => prev + 1)}
+              minus={() => setCount1((prev) => prev - 1)}
             />
             <CartItem
               img={dish6}
               name='Chicken'
               price='20'
-              qty='5'
-              add={add}
-              minus={minus}
+              qty={count}
+              add={() => setCount((prev) => prev + 1)}
+              minus={() => setCount((prev) => prev - 1)}
             />
           </div>
           <div style={{ position: 'relative', bottom: '40px' }}>
