@@ -6,7 +6,15 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db, logout } from 'services/firebase';
 import Dish from 'components/Dishes/Dish';
 import CartItem from 'components/CartItem/CartItem';
-import { dish6, dish3, background } from '../../assets/index';
+import {
+  dish6,
+  dish3,
+  background,
+  dish4,
+  dish5,
+  dish7,
+  dish8,
+} from '../../assets/index';
 
 import './style.scss';
 
@@ -69,7 +77,7 @@ function Home() {
             </Link>
           </div>
           <div className='home__top-nav-icon'>
-            <i className='bx bx-search'></i>
+            <i onClick={logout()} className='bx bx-search'></i>
             <i onClick={() => setCart(true)} className='bx bx-shopping-bag'></i>
           </div>
         </div>
@@ -133,7 +141,7 @@ function Home() {
               rating='4.7'
               duration='50'
             />
-            {/*<Dish
+            <Dish
               img={dish3}
               name='Home made pizza'
               price='19'
@@ -145,6 +153,14 @@ function Home() {
               img={dish4}
               name='Home made pizza'
               price='19'
+              rating='4.7'
+              duration='50'
+            />
+            <Dish
+              img={dish5}
+              name='Home made pizza'
+              price='19'
+              discount='50'
               rating='4.7'
               duration='50'
             />
@@ -179,7 +195,7 @@ function Home() {
               discount='50'
               rating='4.7'
               duration='50'
-            />*/}
+            />
           </div>
         </div>
         <div className='home__middle-more'>

@@ -11,6 +11,7 @@ $sub-color: #efefef;
 	font-weight: 400;
 	font-size: 16px;
 	margin-bottom: 40px;
+	margin-right: 50px;
 	& .dish__discount {
 		position: absolute;
 		background-color: #F3BA00;
@@ -20,11 +21,12 @@ $sub-color: #efefef;
 		letter-spacing: -0.012em;
 	}
 	& img {
+		width: 15vw;
 		cursor: pointer;
 	}
 	& .dish__details {
 		position: relative;
-		width: 74%;
+		width: 13.8vw;
 		background-color: white;
 		display: flex;
 		flex-direction: column;
@@ -79,5 +81,96 @@ $sub-color: #efefef;
 	}
 	& .dish__details-add:hover, .dish__details-rating:hover {
 		opacity: 0.7;
+	}
+}
+
+@media only screen and (min-width: 738px) and (max-width: 1400px) {
+	.dish__container {
+		width: 17%;
+		box-sizing: border-box;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		font-family: 'ABeeZee';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 16px;
+		margin-bottom: 40px;
+		margin-right: 50px;
+		& .dish__discount {
+			position: absolute;
+			background-color: #F3BA00;
+			padding: 5px;
+			font-size: 12px;
+			border-radius: 8px 0 0 0;
+			letter-spacing: -0.012em;
+		}
+		& img {
+			width: 100%;
+			cursor: pointer;
+		}
+		& .dish__details {
+			position: relative;
+			width: 85%;
+			background-color: white;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			padding: 15px 12px;
+			border-radius: 0 0 10px 10px;
+		}
+		& .dish__details-top {
+			display: flex;
+			justify-content: space-between;
+		}
+		& .dish__details-bottom {
+			margin-top: 10px;
+			font-size: 10px;
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+		}
+		& .dish__details-rating {
+			background-color: $sub-color;
+			border-radius: 7px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 0 6px;
+			cursor: pointer;
+			display: none;
+		}
+		& .dish__details-rating i {
+			margin-right: 3px;
+			font-size: 13px;
+		}
+		& .dish__details-time {
+			position: relative;
+			right: 40px;
+			background-color: $sub-color;
+			border-radius: 7px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 0 6px;
+			display: none;
+		}
+		& .dish__details-add {
+			background-color: #F3BA00;
+			color: white;
+			font-size: 14px;
+			border-radius: 8px;
+			margin-right: 10px;
+			padding: 4px;
+			display: flex;
+			justify-content: center;
+			align-items: center	;
+			cursor: pointer;
+			display: none;
+		}
+		& .dish__details-add:hover, .dish__details-rating:hover {
+			opacity: 0.7;
+		}
 	}
 }
