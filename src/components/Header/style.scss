@@ -1,0 +1,54 @@
+@import 'assets/scss/mixin.scss';
+
+$primary-color: #1AC073;
+$sub-color: #F7F8FA;
+
+.header {
+	height: 10vh;
+	background-color: $primary-color;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	.logo {
+		font-family: 'Squada One', cursive;
+		color: white;
+		font-size: 32px;
+		margin-left: 150px;
+		cursor: pointer;
+		@include responsive(tablet) {
+			margin-left: 50px;
+		}
+	}
+	&__icon {
+		margin-right: 150px;
+		& .search {
+			margin-right: 20px;
+		}
+		& i {
+			font-size: 25px;
+			color: white;
+			cursor: pointer;
+		}
+		& i:hover {
+			opacity: 0.8;
+		}
+		@include responsive(tablet) {
+			margin-right: 50px;
+		}
+	}
+	&__nav {
+		display: flex;
+		justify-content: space-between;
+		width: 70vh;
+		font-family: 'ABeeZee', sans-serif;
+		font-size: 18px;
+		& a {
+			color: white;
+			text-decoration: none;
+		}
+		@include responsive(tablet) {
+			width: 45vh;
+			font-size: 16px;
+		}
+	}
+}

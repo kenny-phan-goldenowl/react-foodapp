@@ -20,6 +20,8 @@ function SignInForm() {
     if (user) navigate('/');
   }, [user, loading]);
 
+  console.log(user);
+
   return (
     <div className='signin__form'>
       <div className='signin'>

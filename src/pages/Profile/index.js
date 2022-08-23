@@ -1,13 +1,26 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { collection, getDocs } from 'firebase/firestore';
 
 import Bill from 'components/Bill/Bill';
 import NavBar from 'components/Navbar/NavBar';
 import { truck, avatar } from 'assets';
+import { db } from 'services/firebase';
 
 import './style.scss';
 
 function Profile() {
+  const orderRef = collection(db, 'orders');
+  const [data, setData] = useState([]);
   const [toggle, setToggle] = useState(true);
+
+  useEffect(() => {
+    getDocs(orderRef).then((snapshot) => {
+      snapshot.docs.forEach((doc) => {
+        setData((prev) => [...prev, doc.data()]);
+      });
+    });
+  }, []);
+
   return (
     <div className='profile'>
       <NavBar icon1='bx bx-search' icon2='bx bx-shopping-bag' />
@@ -42,9 +55,16 @@ function Profile() {
           className='orderHistory'
         >
           <h1>Order History</h1>
-          <div>
-            <Bill />
-            <Bill />
+          <div style={{ overFlow: 'auto' }}>
+            {data.map((item) => (
+              <Bill
+                key={item.id}
+                name={item.name}
+                price={item.price}
+                details={item.description}
+                quantity={item.quantity}
+              />
+            ))}
           </div>
         </div>
       </div>

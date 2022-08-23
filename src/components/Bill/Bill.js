@@ -16,46 +16,29 @@ function Item({ name, price, details, quantity }) {
   );
 }
 
-function Bill() {
+function Bill({ name, price, details, quantity }) {
+  let newDate = new Date();
+  let date = newDate.getDate();
+  let month = newDate.getMonth() + 1;
+  let year = newDate.getFullYear();
   return (
     <div className='bill'>
       <p className='bill__id'>Order #997</p>
-      <p className='bill__date'>23 Feb 2021, 08:28 PM</p>
+      <p className='bill__date'>{`${year}/${
+        month < 10 ? `0${month}` : `${month}`
+      }/${date}`}</p>
       <div className='bill__item'>
-        <Item
-          name='Small Mac'
-          price='3.99'
-          details='Iceberg lettuce,cheese, pickles ...'
-          quantity='5'
-        />
-        <Item
-          name='Normal Mac'
-          price='5.99'
-          details='beef patties, pickles ...'
-          quantity='3'
-        />
-        <Item
-          name='Normal Mac'
-          price='5.99'
-          details='beef patties, pickles ...'
-          quantity='3'
-        />
-        <Item
-          name='Small Mac'
-          price='3.99'
-          details='Iceberg lettuce,cheese, pickles ...'
-          quantity='5'
-        />
-        <Item
-          name='Small Mac'
-          price='3.99'
-          details='Iceberg lettuce,cheese, pickles ...'
-          quantity='5'
-        />
+        <Item name={name} price={price} details={details} quantity={quantity} />
+        <Item />
+        <Item />
+        <Item />
+        <Item />
+        <Item />
+        <Item />
       </div>
       <div className='line'></div>
       <div className='bill__end'>
-        <p>Total: $25.34</p>
+        <p>Total: {price * quantity}</p>
         <button>Paid</button>
       </div>
     </div>

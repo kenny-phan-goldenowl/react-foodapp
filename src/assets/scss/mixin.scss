@@ -1,76 +1,10 @@
-@mixin text($family, $size, $color, $fontWeight: 400, $lineHeight: normal) {
-	color: $color;
-	font-size: $size;
-	font-family: $family;
-	font-weight: $fontWeight;
-	line-height: $lineHeight;
-	margin: 0;
+$min-tablet-width: 738px;
+$max-tablet-width: 1300px;
+
+@mixin responsive($type) {
+  @if $type==tablet {
+    @media only screen and (min-width: $min-tablet-width) and (max-width: $max-tablet-width) {
+      @content;
+    }
   }
-  
-  @mixin input($padding, $radius, $background, $width: auto, $height: auto) {
-	// border: none;
-	outline: none;
-	width: $width;
-	height: $height;
-	padding: $padding;
-	border-radius: $radius;
-	background: $background;
-  }
-  
-  @mixin button(
-	$padding,
-	$radius,
-	$background,
-	$width: auto,
-	$height: auto,
-	$cursor: pointer
-  ) {
-	border: none;
-	outline: none;
-  
-	width: $width;
-	height: $height;
-	padding: $padding;
-	border-radius: $radius;
-  
-	background: $background;
-  
-	cursor: $cursor;
-  }
-  
-  @mixin list() {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-  }
-  
-  @mixin link($family, $size, $color, $lineHeight: normal) {
-	font-family: $family;
-	font-size: $size;
-	color: $color;
-	line-height: $lineHeight;
-	text-decoration: none;
-	outline: none;
-	&:hover,
-	&:active,
-	&:focus {
-	  outline: none;
-	}
-  }
-  
-  @mixin flex(
-	$justify-content: flex-start,
-	$align-items: stretch,
-	$direction: row
-  ) {
-	display: flex;
-	justify-content: $justify-content;
-	align-items: $align-items;
-	flex-direction: $direction;
-  }
-  
-  @mixin square($size, $radius: 0) {
-	width: $size !important;
-	height: $size;
-	border-radius: $radius;
-  }
+}

@@ -29,7 +29,7 @@ function SignUpForm() {
   }, [user, loading]);
 
   const handleClick = () => {
-    navigate('/');
+    navigate('/signIn');
   };
 
   return (
