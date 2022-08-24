@@ -1,18 +1,44 @@
 import { useEffect, useState } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
 
 import Bill from 'components/Bill/Bill';
-import NavBar from 'components/Navbar/NavBar';
+import Footer from 'components/Footer';
+import Header from 'components/Header';
 import { truck, avatar } from 'assets';
-import { db } from 'services/firebase';
+import { db, auth } from 'services/firebase';
 
 import './style.scss';
 
 function Profile() {
+  const navigate = useNavigate();
+  const [user, loading] = useAuthState(auth);
   const orderRef = collection(db, 'orders');
+  const userRef = collection(db, 'users');
   const [data, setData] = useState([]);
+  const [id, setId] = useState('');
   const [toggle, setToggle] = useState(true);
 
+  const fetchUserId = async () => {
+    try {
+      const q = query(userRef, where('uid', '==', user.uid));
+      const doc = await getDocs(q);
+      const data = doc.docs[0].data();
+      setId(data.uid);
+    } catch (error) {
+      console.error(error);
+      alert('Error while fetching data');
+    }
+  };
+
+  useEffect(() => {
+    if (loading) return;
+    if (!user) return navigate('/');
+    fetchUserId();
+  }, [user, loading]);
+
+  // get orders list
   useEffect(() => {
     getDocs(orderRef).then((snapshot) => {
       snapshot.docs.forEach((doc) => {
@@ -21,16 +47,20 @@ function Profile() {
     });
   }, []);
 
+  console.log(user);
+  console.log(id);
+  console.log(loading);
+
   return (
-    <div className='profile'>
-      <NavBar icon1='bx bx-search' icon2='bx bx-shopping-bag' />
-      <div className='profile__middle'>
-        <div className='profile__middle-img'>
+    <div>
+      <Header />
+      <div className='profile'>
+        <div className='profile__img'>
           <img className='img1' src={truck} alt='background img' />
           <img className='img2' src={avatar} alt='avatar img' />
         </div>
-        <div className='profile__middle-switch'>
-          <button onClick={() => setToggle(true)} className='btn1'>
+        <div className='profile__switch'>
+          <button onClick={() => setToggle(true)} className='btn1' autoFocus>
             {' '}
 						Profile{' '}
           </button>
@@ -40,8 +70,8 @@ function Profile() {
           </button>
         </div>
         <div
-          style={{ visibility: toggle ? 'visible' : 'hidden' }}
-          className='profile__middle-input'
+          style={{ display: toggle ? '' : 'none' }}
+          className='profile__info'
         >
           <h1>Personal Information</h1>
           <input type='text' placeholder='Username' />
@@ -51,30 +81,26 @@ function Profile() {
           <button>Edit</button>
         </div>
         <div
-          style={{ visibility: toggle ? 'hidden' : 'visible' }}
-          className='orderHistory'
+          style={{ display: toggle ? 'none' : '' }}
+          className='profile__order'
         >
           <h1>Order History</h1>
           <div style={{ overFlow: 'auto' }}>
-            {data.map((item) => (
-              <Bill
-                key={item.id}
-                name={item.name}
-                price={item.price}
-                details={item.description}
-                quantity={item.quantity}
-              />
-            ))}
+            {data
+              .filter((item) => item.uid === id)
+              .map((item) => (
+                <Bill
+                  key={item.id}
+                  name={item.name}
+                  price={item.price}
+                  details={item.description}
+                  quantity={item.quantity}
+                />
+              ))}
           </div>
         </div>
       </div>
-      <div>
-        <NavBar icon1='bx bxl-facebook-square' icon2='bx bxl-instagram' />
-        <div className='profile__copyright'>
-          <div></div>
-          <p>Copyright @2022 TBayEAT</p>
-        </div>
-      </div>
+      <Footer />
     </div>
   );
 }

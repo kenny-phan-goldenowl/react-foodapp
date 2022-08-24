@@ -1,270 +1,131 @@
-$primary-color: #1AC073;
-$sub-color: #F0FAF7;
+@import 'assets/scss/mixin.scss';
 
 .profile {
+	display: flex;
+	flex-direction: column;
 	height: 100%;
-	display: flex;
-	flex-direction: column;
-}
-
-.profile__middle {
-	height: 200vh;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	&-img {
-		& .img1 {
-			position: absolute;
-			right: 0;
-			width: 100vw;
-			height: 90vh;
-		}
-		& .img2 {
-			position: absolute;
-			left: 80px;
-			bottom: -60px;
-		}
-	}
-}
-
-.profile__middle-switch {
-	margin-top: 50px;
-	top: 100vh;
-	left: 40vw;
-	position: absolute;
-	display: flex;
-	justify-content: center;
-	& button {
-		font-size: 18px;
-		background-color: white;
-		font-family: "ABeeZee";
-		color: #929292;
-		border: 1px solid #F3BA00;
-		cursor: pointer;
-	}
-	& button:focus {
-		background-color: #F3BA00;
-		color: black;
-	}
-	& .btn1 {
-		border-radius: 10px 0 0 10px;
-		padding: 10px 50px;
-	}
-	& .btn2 {
-		border-radius: 0 10px 10px 0;
-		padding: 10px 20px;
-	}
-}
-
-.profile__middle-input {
-	margin-top: 100px;
-	position: relative;
-	width: 40%;
-	top: 75vh;
-	align-self: center;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	color: $primary-color;
-	font-family: 'ABeeZee', sans-serif;
-	font-size: 25px;
-	& h1 {
-		text-align: center;
-		margin-bottom: 40px;
-	}
-	& input {
-		font-size: 20px;
-		border: none;
-		background-color: $sub-color;
-		padding: 20px 30px;
-		border-radius: 10px;
-		margin-bottom: 40px;
-	}
-	& input::placeholder {
-		color: $primary-color;
-		font-family: 'Lexend Deca';
-		font-style: normal;
-		font-weight: 400;
-		font-size: 18px;
-	}
-	& input:focus {
-		outline: none;
-	}
-	& button {
-		background-color: $primary-color;
-		border: none;
-		padding: 20px;
-		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
-		border-radius: 10px;
-		font-family: 'Lexend Deca', sans-serif;
-		font-style: normal;
-		font-weight: 400;
-		font-size: 18px;
-		color: white;
-		cursor: pointer;
-	}
-	& button:hover {
-		opacity: 0.8;
-	}
-}
-
-.profile__copyright {
-	height: 5vh;
-	background-color: $primary-color;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	& div {
-		background-color: white;
-		height: 1px;
-		width: 80%;
-		margin-bottom: 20px;
-	}
-	& p {
-		font-size: 12px;
-		color: white;
-		font-family: 'ABeeZee';
-		font-style: normal;
-	}
-}
-
-.orderHistory {
-	position: relative;
-	align-self: center;
-	& h1 {
+	&__img {
 		position: relative;
-		top: -30px;
-		text-align: center;
-		color: $primary-color;
-		font-family: 'ABeeZee';
-		font-size: 45px;
-	}
-	& div {
-		position: relative;
-		top: -10px;
-	}
-}
-
-@media only screen and (min-width: 738px) and (max-width: 1023px) {
-	.profile {
-		height: 100%;
-		display: flex;
-		flex-direction: column;
-	}
-	.profile__middle {
-		height: 200vh;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		&-img {
-			& .img1 {
-				position: absolute;
-				right: 0;
-				width: 100vw;
-				height: 70vh;
-			}
-			& .img2 {
-				position: absolute;
-				left: 40px;
-				bottom: 70px;
-				width: 250px;
-				height: 250px;
-			}
-		}
-	}
-	.profile__middle-switch {
-		margin-bottom: 100px;
-		top: 85vh;
-		left: 35vw;
-		position: absolute;
 		display: flex;
 		justify-content: center;
-		& button {
-			font-size: 18px;
-			background-color: white;
-			font-family: "ABeeZee";
-			color: #929292;
-			border: 1px solid #F3BA00;
-			cursor: pointer;
+		.img1 {
+			position: relative;
+			width: 90vw;
 		}
-		& button:focus {
-			background-color: #F3BA00;
-			color: black;
-		}
-		& .btn1 {
-			border-radius: 10px 0 0 10px;
-			padding: 10px 50px;
-		}
-		& .btn2 {
-			border-radius: 0 10px 10px 0;
-			padding: 10px 20px;
+		.img2 {
+			position: absolute;
+			bottom: -100px;
+			left: 170px;
+			@include responsive(tablet) {
+				left: 10vw;
+				bottom: -8vh;
+				width: 20vw;
+			}
 		}
 	}
-	.profile__middle-input {
-		position: relative;
-		width: 40%;
-		top: 65vh;
-		align-self: center;
+	&__switch {
+		margin-top: 10vh;
+		display: flex;
+		justify-content: center;
+		padding: 20px 0;
+		& button {
+			padding: 10px 30px;
+			font-family: 'ABeeZee';
+			font-style: normal;
+			font-weight: 400;
+			font-size: 18px;
+			line-height: 20px;
+			border: none;
+			border: 1px solid #F3BA00;;
+			color: #929292;
+			cursor: pointer;
+			&:focus {
+				background-color: #F3BA00;
+				color: black;
+				outline: none;
+			}
+			@include responsive(tablet) {
+				padding: 10px 20px;
+			}
+		}
+		.btn1 {
+			border-radius: 10px 0 0 10px;
+		}
+		.btn2 {
+			border-radius: 0 10px 10px 0;
+		}
+	}
+	&__info {
+		margin-top: 5vh;
 		display: flex;
 		flex-direction: column;
-		justify-content: space-between;
-		color: $primary-color;
-		font-family: 'ABeeZee', sans-serif;
-		font-size: 25px;
+		padding: 0 30vw 20vh 30vw;
+		@include responsive(tablet) {
+			padding: 0 20vw 20vh 20vw;
+		}
 		& h1 {
 			text-align: center;
-			margin-bottom: 40px;
+			margin-bottom: 30px;
+			font-family: 'Lexend Deca';
+			font-style: normal;
+			font-weight: 400;
+			font-size: 45px;
+			color: #1AC073;
+			@include responsive(tablet) {
+				font-size: 30px;
+			}
 		}
-		& input {
-			font-size: 20px;
+		& input[type='text'] {
+			padding: 20px 35px;
 			border: none;
-			background-color: $sub-color;
-			padding: 20px 30px;
+			background: #F0FAF7;
 			border-radius: 10px;
-			margin-bottom: 40px;
+			margin: 15px 0;
+			&:focus {
+				outline: none;
+			}
+			&::placeholder {
+				color: #1AC073;
+				font-family: 'Lexend Deca';
+				font-style: normal;
+				font-weight: 400;
+				font-size: 16px;
+			}
 		}
-		& input::placeholder {
-			color: $primary-color;
+		& button {
+			margin-top: 15px;
+			background-color: #1AC073;
+			padding: 15px;
+			border: none;
+			box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+			border-radius: 15px;
+			color: white;
 			font-family: 'Lexend Deca';
 			font-style: normal;
 			font-weight: 400;
 			font-size: 18px;
-		}
-		& input:focus {
-			outline: none;
-		}
-		& button {
-			background-color: $primary-color;
-			border: none;
-			padding: 20px;
-			box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
-			border-radius: 10px;
-			font-family: 'Lexend Deca', sans-serif;
-			font-style: normal;
-			font-weight: 400;
-			font-size: 18px;
-			color: white;
 			cursor: pointer;
-		}
-		& button:hover {
-			opacity: 0.8;
+			&:focus, &:hover {
+				outline: none;
+				opacity: 0.8;
+			}
 		}
 	}
-	.orderHistory {
-		position: relative;
-		align-self: center;
-		bottom: 20vh;
+	&__order {
+		margin-top: 5vh;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding-bottom: 10vh;
 		& h1 {
-			position: relative;
-			top: -30px;
-			text-align: center;
-			color: $primary-color;
-			font-family: 'ABeeZee';
-			font-size: 45px;
-		}
-		& div {
-			position: relative;
-			top: -10px;
+			font-family: 'Lexend Deca';
+			font-style: normal;
+			font-weight: 400;
+			font-size: 40px;
+			color: #1AC073;
+			@include responsive(tablet) {
+				font-size: 30px;
+			}
 		}
 	}
 }

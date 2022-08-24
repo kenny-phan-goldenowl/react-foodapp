@@ -32,9 +32,6 @@ function Bill({ name, price, details, quantity }) {
         <Item />
         <Item />
         <Item />
-        <Item />
-        <Item />
-        <Item />
       </div>
       <div className='line'></div>
       <div className='bill__end'>
