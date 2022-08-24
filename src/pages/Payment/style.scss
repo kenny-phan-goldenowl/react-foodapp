@@ -495,7 +495,7 @@ $sub-color: #F7F8FA;
 				justify-content: center;
 				align-items: center;
 				& input[type="text"] {
-					font-size: 20px;
+					font-size: 15px;
 					padding: 19px;
 					width: 15vw;
 					border: 1px solid rgb(233, 233, 233);
@@ -507,7 +507,7 @@ $sub-color: #F7F8FA;
 					font-family: 'Lexend Deca';
 					font-style: normal;
 					font-weight: 500;
-					font-size: 18px;
+					font-size: 14px;
 					align-items: center;
 					color: #FFFFFF;
 					border: none;
@@ -527,7 +527,7 @@ $sub-color: #F7F8FA;
 				font-family: 'Poppins';
 				font-style: normal;
 				font-weight: 400;
-				font-size: 18px;
+				font-size: 14px;
 				color: #262626;
 				&-sub, &-ship, &-coupon, &-total {
 					display: flex;
@@ -542,7 +542,7 @@ $sub-color: #F7F8FA;
 					font-family: 'Lexend Deca';
 					font-style: normal;
 					font-weight: 500;
-					font-size: 30px;
+					font-size: 22px;
 					color: #22262A;
 				}
 				&-btn1, &-btn2 {

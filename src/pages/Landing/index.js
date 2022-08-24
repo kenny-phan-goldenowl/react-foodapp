@@ -34,6 +34,7 @@ function Home() {
     }
   };
 
+  // get dish list
   useEffect(() => {
     getDocs(dishRef)
       .then((snapshot) => {

@@ -36,7 +36,7 @@
 			font-size: 18px;
 			line-height: 20px;
 			border: none;
-			border: 1px solid #F3BA00;;
+			border: 1px solid #F3BA00;
 			color: #929292;
 			cursor: pointer;
 			&:focus {
@@ -49,10 +49,24 @@
 			}
 		}
 		.btn1 {
-			border-radius: 10px 0 0 10px;
+			&__true {
+				background-color: #F3BA00;
+				color: black;
+				border-radius: 10px 0 0 10px;
+			}
+			&__false {
+				border-radius: 10px 0 0 10px;
+			}
 		}
 		.btn2 {
-			border-radius: 0 10px 10px 0;
+			&__false {
+				background-color: #F3BA00;
+				color: black;
+				border-radius: 0 10px 10px 0;
+			}
+			&__true {
+				border-radius: 0 10px 10px 0;
+			}
 		}
 	}
 	&__info {

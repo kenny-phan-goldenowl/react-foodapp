@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import NavBar from 'components/Navbar/NavBar';
+import Footer from 'components/Footer';
 import CartItem from 'components/CartItem/CartItem';
 import { background, dish2, dish3, dish8, visa } from 'assets';
 
@@ -105,11 +106,7 @@ function Payment() {
         </div>
       </div>
       <div>
-        <NavBar icon1='bx bxl-facebook-square' icon2='bx bxl-instagram' />
-        <div className='profile__copyright'>
-          <div></div>
-          <p>Copyright @2022 TBayEAT</p>
-        </div>
+        <Footer />
       </div>
       <div
         className='payment__charge'

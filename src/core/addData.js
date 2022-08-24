@@ -1,4 +1,10 @@
-import { collection, getDocs, addDoc } from 'firebase/firestore';
+import {
+  collection,
+  getDocs,
+  addDoc,
+  updateDoc,
+  doc,
+} from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { db } from 'services/firebase';
 
@@ -12,6 +18,7 @@ function Add() {
   const [user, setUser] = useState([]);
   const [id, setId] = useState('');
 
+  // get User ID -----------------------------------------------
   const fecthUserId = async () => {
     try {
       const doc = await getDocs(userRef);
@@ -24,6 +31,7 @@ function Add() {
 
   const res = order.filter((item) => item.uid === id);
 
+  // add dish to firestore -----------------------------------------------------
   const addDish = (name, price, time, rating, url, type, discount) => {
     addDoc(dishRef, {
       name    : name,
@@ -36,15 +44,23 @@ function Add() {
     }).then(() => console.log('dish added'));
   };
 
-  const addOrder = (name, price, url, dishes) => {
+  const addOrder = (id, uid, dishes) => {
     addDoc(orderRef, {
-      name   : name,
-      price  : price,
-      img_url: url,
-      dishes : dishes,
+      id    : id,
+      uid   : uid,
+      dishes: dishes,
     }).then(() => console.log('order added'));
   };
 
+  // update an item -----------------------------------------------------------
+  const updateRef = doc(db, 'dishes', 'OCZREvcwrGQOYavV8JlR');
+  const updateDish = (name) => {
+    updateDoc(updateRef, {
+      name: name,
+    }).then(() => console.log('Updated dish'));
+  };
+
+  // fetch data -------------------------------------------------------------
   useEffect(() => {
     getDocs(dishRef)
       .then((snapshot) => {
@@ -94,7 +110,19 @@ function Add() {
       >
 				Add dish
       </button>
-      <button onClick={() => addOrder()}> Add order</button>
+      <button onClick={() => updateDish('pizza')}>Update dish</button>
+      <button
+        onClick={() =>
+          addOrder(6, '5F54XWzoARUvZdsP1ivX96xiSQy1', [
+            'zkxXrdNIBu1uFY3eAh1c',
+            'TvvfpIFjgFmSvCCaCk9d',
+            'nMWZNa83HFELMfdDsuO5',
+          ])
+        }
+      >
+        {' '}
+				Add order
+      </button>
       <ul>
         {data?.map((item) => (
           <li key={item.id}>

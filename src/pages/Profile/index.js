@@ -1,5 +1,12 @@
 import { useEffect, useState } from 'react';
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import {
+  collection,
+  getDocs,
+  query,
+  where,
+  doc,
+  updateDoc,
+} from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 
@@ -14,11 +21,18 @@ import './style.scss';
 function Profile() {
   const navigate = useNavigate();
   const [user, loading] = useAuthState(auth);
-  const orderRef = collection(db, 'orders');
-  const userRef = collection(db, 'users');
   const [data, setData] = useState([]);
   const [id, setId] = useState('');
   const [toggle, setToggle] = useState(true);
+  const [dish, setDish] = useState([]);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [dob, setDob] = useState('');
+  const orderRef = collection(db, 'orders');
+  const userRef = collection(db, 'users');
+  const dishRef = collection(db, 'dishes');
+  const updateInfoRef = doc(db, 'users', 'a0sAWN8IU70iWXYZjwxt');
 
   const fetchUserId = async () => {
     try {
@@ -29,6 +43,23 @@ function Profile() {
     } catch (error) {
       console.error(error);
       alert('Error while fetching data');
+    }
+  };
+
+  const editInfo = (name, email, phone, dob) => {
+    if ((name, email, phone, dob)) {
+      updateDoc(updateInfoRef, {
+        name : name,
+        email: email,
+        phone: phone,
+        dob  : dob,
+      }).then(() => alert('Edit success'));
+      setName('');
+      setEmail('');
+      setPhone('');
+      setDob('');
+    } else {
+      alert('Try again');
     }
   };
 
@@ -47,6 +78,15 @@ function Profile() {
     });
   }, []);
 
+  // get dish list
+  useEffect(() => {
+    getDocs(dishRef).then((snapshot) => {
+      snapshot.docs.forEach((doc) => {
+        setDish((prev) => [...prev, doc.data()]);
+      });
+    });
+  }, []);
+
   console.log(user);
   console.log(id);
   console.log(loading);
@@ -60,11 +100,18 @@ function Profile() {
           <img className='img2' src={avatar} alt='avatar img' />
         </div>
         <div className='profile__switch'>
-          <button onClick={() => setToggle(true)} className='btn1' autoFocus>
+          <button
+            onClick={() => setToggle(true)}
+            className={`btn1__${toggle}`}
+            autoFocus
+          >
             {' '}
 						Profile{' '}
           </button>
-          <button onClick={() => setToggle(false)} className='btn2'>
+          <button
+            onClick={() => setToggle(false)}
+            className={`btn2__${toggle}`}
+          >
             {' '}
 						Order History{' '}
           </button>
@@ -74,11 +121,33 @@ function Profile() {
           className='profile__info'
         >
           <h1>Personal Information</h1>
-          <input type='text' placeholder='Username' />
-          <input type='text' placeholder='Email' />
-          <input type='text' placeholder='Phone Number' />
-          <input type='text' placeholder='Date Of Birth' />
-          <button>Edit</button>
+          <input
+            type='text'
+            placeholder='Username'
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <input
+            type='text'
+            placeholder='Email'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type='text'
+            placeholder='Phone Number'
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+          />
+          <input
+            type='text'
+            placeholder='Date Of Birth'
+            value={dob}
+            onChange={(e) => setDob(e.target.value)}
+          />
+          <button onClick={() => editInfo(name, email, phone, dob)}>
+						Edit
+          </button>
         </div>
         <div
           style={{ display: toggle ? 'none' : '' }}
@@ -89,13 +158,7 @@ function Profile() {
             {data
               .filter((item) => item.uid === id)
               .map((item) => (
-                <Bill
-                  key={item.id}
-                  name={item.name}
-                  price={item.price}
-                  details={item.description}
-                  quantity={item.quantity}
-                />
+                <Bill key={item.id} dishesInOrder={item.dishes} dishes={dish} />
               ))}
           </div>
         </div>
