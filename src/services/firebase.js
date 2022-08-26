@@ -40,6 +40,7 @@ export const db = getFirestore(app);
 export const signInMail = async (email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
+    alert('Login success');
   } catch (error) {
     console.error(error);
     alert(error.message);

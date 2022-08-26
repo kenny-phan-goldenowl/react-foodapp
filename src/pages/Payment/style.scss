@@ -1,10 +1,7 @@
 $primary-color: #1AC073;
 $sub-color: #F7F8FA;
 
-.home__top-menu {
-	background-color: $primary-color;
-	height: 66.5vh;
-}
+@import 'assets/scss/mixin.scss';
 
 .payment {
 	height: 100%;
@@ -22,14 +19,16 @@ $sub-color: #F7F8FA;
 		font-size: 18px;
 		line-height: 21px;
 		color: #1AC073;
-		cursor: pointer;
 	}
 	&__details {
-		padding: 0 30px;
-		margin-top: 40px;
+		background-color: red;
+		box-sizing: border-box;
 		position: relative;
+		margin: 40px 0;
+		padding: 0 40px;
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
 		font-family: 'Lexend Deca';
 		font-style: normal;
 		font-weight: 500;
@@ -38,37 +37,40 @@ $sub-color: #F7F8FA;
 		color: #22262A;
 		&-qty {
 			position: relative;
-			left: 12vw;
 		}
 		&-price {
 			position: relative;
-			left: 25.5vw;
 		}
 		&-unit {
 			position: relative;
-			right: 4vh;
 		}
 	}
+	&__items {
+		background-color: red;
+		overflow: auto;
+	}
 	&__line {
-		margin-top: 50px;
+		margin: 50px 0;
 		width: 100%;
 		height: 2px;
 		background-color: rgb(233, 233, 233);
 	}
 	&__total {
-		margin-top: 50px;
 		display: flex;
 		justify-content: space-between;
 		&-voucher {
-			display: flex;
-			justify-content: center;
-			align-items: center;
 			& input[type="text"] {
+				width: 20vw;
 				font-size: 20px;
 				padding: 19px;
 				border: 1px solid rgb(233, 233, 233);
 				&:focus {
 					outline: none;
+				}
+				@include responsive(tablet) {
+					width: 15vw;
+					font-size: 15px;
+					padding: 15px 0 15px 15px;
 				}
 			}
 			& button {
@@ -81,40 +83,51 @@ $sub-color: #F7F8FA;
 				border: none;
 				background-color: #1AC073;
 				padding: 20px;
-				border-radius: 0 7px 7px 0;
+				border-radius: 0 3px 3px 0;
 				cursor: pointer;
 				&:hover {
 					opacity: 0.8;
+				}
+				@include responsive(tablet) {
+					font-size: 15px;
+					padding: 15px;
 				}
 			}
 		}
 		&-result {
 			display: flex;
 			flex-direction: column;
-			width: 30%;
+			width: 35vw;
 			font-family: 'Poppins';
 			font-style: normal;
 			font-weight: 400;
 			font-size: 18px;
 			color: #262626;
+			@include responsive(tablet) {
+				width: 25vw;
+				font-size: 15px;
+			}
 			&-sub, &-ship, &-coupon, &-total {
 				display: flex;
 				justify-content: space-between;
-				margin-top: 30px;
+			}
+			&-ship {
+				margin: 30px 0;
 			}
 			&-total {
-				margin-top: 60px;
+				margin-top: 30px;
 				padding-top: 30px;
-				margin-bottom: 30px;
 				border-top: 2px solid rgb(233, 233, 233);
 				font-family: 'Lexend Deca';
 				font-style: normal;
 				font-weight: 500;
 				font-size: 30px;
 				color: #22262A;
+				@include responsive(tablet) {
+					font-size: 20px;
+				}
 			}
 			&-btn1, &-btn2 {
-				margin-top: 30px;
 				font-family: 'Lexend Deca';
 				font-style: normal;
 				font-weight: 400;
@@ -129,32 +142,42 @@ $sub-color: #F7F8FA;
 				&:hover {
 					opacity: 0.8;
 				}
+				@include responsive(tablet) {
+					margin-bottom: 10px;
+					padding: 15px;
+				}
 			}
 			&-btn1 {
 				background-color: white;
 				border: 1px solid #1AC073;
+				margin-top: 30px;
 			}
 			&-btn2 {
 				background-color: #1AC073;
 				color: white;
+				margin-top: 15px;
 			}
 		}
 	}
 	&__charge {
-		position: absolute;
+		position: fixed;
 		background: rgba(34, 34, 34, 0.3);
 		top: 0;
-		width: 100%;
-		height: 268%;
+		width: 100vw;
+		height: 100vh;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		&-form {
-			width: 60%;
-			height: 30%;
+			width: 60vw;
+			height: 80vh;
 			padding: 40px;
-			background-color: white;
-			border-radius: 30px;
+			border-radius: 15px;
+			background-color:white;
+			@include responsive(tablet) {
+				padding: 20px;
+				width: 80vw;
+			}
 			&-icon {
 				display: flex;
 				justify-content: space-between;
@@ -163,6 +186,9 @@ $sub-color: #F7F8FA;
 				cursor: pointer;
 				&:hover {
 					opacity: 0.8;
+				}
+				@include responsive(tablet) {
+					font-size: 25px;
 				}
 			}
 			&-title {
@@ -174,6 +200,9 @@ $sub-color: #F7F8FA;
 				font-size: 32px;
 				line-height: 38px;
 				color: #1AC073;
+				@include responsive(tablet) {
+					font-size: 25px;
+				}
 			}
 			&-current {
 				display: flex;
@@ -182,7 +211,7 @@ $sub-color: #F7F8FA;
 				&-page {
 					display: flex;
 					justify-content: space-between;
-					width: 180px;
+					width: 200px;
 					font-family: 'Lexend Deca';
 					font-style: normal;
 					font-weight: 700;
@@ -207,6 +236,9 @@ $sub-color: #F7F8FA;
 						height: 2px;
 						width: 100%;
 					}
+					@include responsive(tablet) {
+						width: 180px;
+					}
 				}
 			}
 			&-info {
@@ -215,9 +247,13 @@ $sub-color: #F7F8FA;
 				justify-content: space-between;
 				padding: 0 80px;
 				height: 450px;
+				@include responsive(tablet) {
+					padding: 0 30px;
+				}
 				&-left {
 					display: flex;
 					flex-direction: column;
+					width: 15vw;
 					justify-content: space-between;
 					& input[type="text"] {
 						width: 130%;
@@ -236,6 +272,10 @@ $sub-color: #F7F8FA;
 						&:focus {
 							outline: none;
 						}
+						@include responsive(tablet) {
+							margin-top: 20px;
+							width: 25vw;
+						}
 					}
 					& h2 {
 						font-family: 'Lexend Deca';
@@ -247,6 +287,11 @@ $sub-color: #F7F8FA;
 						align-items: flex-end;
 						text-transform: capitalize;
 						color: #1AC073;
+						@include responsive(tablet) {
+							width: 200px;
+							font-size: 14px;
+							margin-top: 20px;
+						}
 					}
 					& .item {
 						margin-top: 20px;
@@ -262,6 +307,15 @@ $sub-color: #F7F8FA;
 						line-height: 150%;
 						letter-spacing: 0.5px;
 						color: #223263;
+						@include responsive(tablet) {
+							margin-bottom: 30px;
+							padding: 10px;
+							width: 25.5vw;
+							font-style: normal;
+							font-weight: 700;
+							font-size: 10px;
+							line-height: 150%;
+						}
 						& input[type="checkbox"] {
 							width: 25px;
 							height: 25px;
@@ -292,22 +346,41 @@ $sub-color: #F7F8FA;
 						&:focus {
 							outline: none;
 						}
+						@include responsive(tablet) {
+							margin-top: 30px;
+							width: 25vw;
+							&::placeholder {
+								font-size: 18px;
+							}
+						}
 					}
 					&-address {
 						position: relative;
 						bottom: 40px;
 						height: 150px;
+						@include responsive(tablet) {
+							height: 100px;
+							bottom: 60px;
+						}
 					}
 					&-phone {
 						position: relative;
 						bottom: 80px;
+						@include responsive(tablet) {
+							bottom: 120px;
+						}
 					}
 				}
 				&-button {
 					margin-top: 40px;
 					display: flex;
 					justify-content: center;
+					@include responsive(tablet) {
+						margin-top: 0px;
+					}
 					& button {
+						position: absolute;
+						bottom: 100px;
 						font-family: 'Lexend Deca';
 						font-style: normal;
 						font-weight: 800;
@@ -326,36 +399,53 @@ $sub-color: #F7F8FA;
 						&:hover {
 							opacity: 0.8;
 						}
+						@include responsive(tablet) {
+							position: absolute;
+							bottom: 90px;
+							font-size: 20px;
+							padding: 10px 40px;
+						}
 					}
 				}
 			}
 			&-visa {
-				box-sizing: border-box;
-				position: absolute;
+				margin-top: 90px;
+				padding: 0 6vw;
 				display: flex;
-				width: 60vw;
 				justify-content: space-between;
 				align-items: center;
-				bottom: 120vh;
 				&-img {
-					position: relative;
-					left: 100px;
+					& img {
+						width: 100%;
+						position: relative;
+						bottom: 50px;
+						@include responsive(tablet) {
+							position: relative;
+							left: 5vw;
+							bottom: 50px;
+							width: 25vw;
+						}
+					}
 				}
 				&-info {
 					position: relative;
-					top: 50px;
-					right: 100px;
-					height: 300px;
-					width: 400px;
+					height: 40vh;
+					width: 25vw;
 					padding: 20px;
 					display: flex;
 					flex-direction: column;
 					justify-content: space-between;
+					@include responsive(tablet) {
+						width: 30vw;
+					}
 					& .expire {
 						display: flex;
-						& .item {
-							width: 160px;
-							margin-right: 20px;
+						justify-content: space-between;
+						& input {
+							width: 10vw;
+							@include responsive(tablet) {
+								width: 12vw;
+							}
 						}
 					}
 					& input[type="text"] {
@@ -373,6 +463,9 @@ $sub-color: #F7F8FA;
 						color: #999999;
 						&:focus {
 							outline: none;
+						}
+						@include responsive(tablet) {
+							padding: 10px;
 						}
 					}
 				}
@@ -395,9 +488,8 @@ $sub-color: #F7F8FA;
 				}
 			}
 			&-success {
-				position: absolute;
-				right: 46vw;
-				bottom: 130vh;
+				margin-top: 10vh;
+				position: relative;
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
@@ -431,435 +523,3 @@ $sub-color: #F7F8FA;
 	}
 }
 
-@media only screen and (min-width: 738px) and (max-width: 1300px) {
-	.home__top-menu {
-		background-color: $primary-color;
-		height: 66.5vh;
-	}
-	
-	.payment {
-		height: 186vh;
-		padding: 100px 120px;
-		&__current-page {
-			background-color: $sub-color;
-			width: 100%;
-			height: 100px;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			font-family: 'ABeeZee';
-			font-style: normal;
-			font-weight: 400;
-			font-size: 18px;
-			line-height: 21px;
-			color: #1AC073;
-			cursor: pointer;
-		}
-		&__details {
-			padding: 0 30px;
-			margin-top: 40px;
-			position: relative;
-			display: flex;
-			justify-content: space-between;
-			font-family: 'Lexend Deca';
-			font-style: normal;
-			font-weight: 500;
-			font-size: 16px;
-			line-height: 20px;
-			color: #22262A;
-			&-qty {
-				position: relative;
-				left: 7vw;
-			}
-			&-price {
-				position: relative;
-				left: 15vw;
-			}
-			&-unit {
-				position: relative;
-				right: 0;
-			}
-		}
-		&__line {
-			margin-top: 50px;
-			width: 100%;
-			height: 2px;
-			background-color: rgb(233, 233, 233);
-		}
-		&__total {
-			margin-top: 50px;
-			display: flex;
-			justify-content: space-between;
-			&-voucher {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				& input[type="text"] {
-					font-size: 15px;
-					padding: 19px;
-					width: 15vw;
-					border: 1px solid rgb(233, 233, 233);
-					&:focus {
-						outline: none;
-					}
-				}
-				& button {
-					font-family: 'Lexend Deca';
-					font-style: normal;
-					font-weight: 500;
-					font-size: 14px;
-					align-items: center;
-					color: #FFFFFF;
-					border: none;
-					background-color: #1AC073;
-					padding: 20px;
-					border-radius: 0 7px 7px 0;
-					cursor: pointer;
-					&:hover {
-						opacity: 0.8;
-					}
-				}
-			}
-			&-result {
-				display: flex;
-				flex-direction: column;
-				width: 30%;
-				font-family: 'Poppins';
-				font-style: normal;
-				font-weight: 400;
-				font-size: 14px;
-				color: #262626;
-				&-sub, &-ship, &-coupon, &-total {
-					display: flex;
-					justify-content: space-between;
-					margin-top: 30px;
-				}
-				&-total {
-					margin-top: 60px;
-					padding-top: 30px;
-					margin-bottom: 30px;
-					border-top: 2px solid rgb(233, 233, 233);
-					font-family: 'Lexend Deca';
-					font-style: normal;
-					font-weight: 500;
-					font-size: 22px;
-					color: #22262A;
-				}
-				&-btn1, &-btn2 {
-					margin-top: 30px;
-					font-family: 'Lexend Deca';
-					font-style: normal;
-					font-weight: 400;
-					font-size: 18px;
-					line-height: 20px;
-					color: #1AC073;
-					padding: 20px;
-					border-radius: 10px;
-					border: none;
-					box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
-					cursor: pointer;
-					&:hover {
-						opacity: 0.8;
-					}
-				}
-				&-btn1 {
-					background-color: white;
-					border: 1px solid #1AC073;
-				}
-				&-btn2 {
-					background-color: #1AC073;
-					color: white;
-				}
-			}
-		}
-		&__charge {
-			position: absolute;
-			background: rgba(34, 34, 34, 0.3);
-			top: 0;
-			width: 100%;
-			height: 299.5vh;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			&-form {
-				width: 80%;
-				max-height: 30%;
-				padding: 40px;
-				background-color: white;
-				border-radius: 30px;
-				&-icon {
-					display: flex;
-					justify-content: space-between;
-					font-size: 30px;
-					color: #1AC073;
-					cursor: pointer;
-					&:hover {
-						opacity: 0.8;
-					}
-				}
-				&-title {
-					margin-top: 10px;
-					text-align: center;
-					font-family: 'ABeeZee';
-					font-style: normal;
-					font-weight: 400;
-					font-size: 32px;
-					line-height: 38px;
-					color: #1AC073;
-				}
-				&-current {
-					display: flex;
-					justify-content: center;
-					margin-top: 30px;
-					&-page {
-						display: flex;
-						justify-content: space-between;
-						width: 180px;
-						font-family: 'Lexend Deca';
-						font-style: normal;
-						font-weight: 700;
-						font-size: 18px;
-						line-height: 22px;
-						letter-spacing: -0.02em;
-						color: #FFFFFF;
-						text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.25);
-						cursor: pointer;
-						& .page {
-							background-color: #DFDEDE;
-							padding: 9px 15px;
-							border-radius: 50%;
-							&:hover {
-								opacity: 0.8;
-							}
-						}
-						& .line {
-							position: relative;
-							top: 20px;
-							background-color: #DFDEDE;
-							height: 2px;
-							width: 100%;
-						}
-					}
-				}
-				&-info {
-					margin-top: 30px;
-					display: flex;
-					justify-content: space-between;
-					padding: 0 20px;
-					height: 450px;
-					&-left {
-						display: flex;
-						flex-direction: column;
-						justify-content: space-between;
-						& input[type="text"] {
-							width: 30vw;
-							padding: 15px;
-							border: none;
-							border-radius: 10px;
-							background-color: $sub-color;
-							font-size: 20px;
-							font-family: 'Lexend Deca';
-							font-style: normal;
-							font-weight: 400;
-							font-size: 16px;
-							line-height: 20px;
-							letter-spacing: -0.02em;
-							color: #999999;
-							&:focus {
-								outline: none;
-							}
-						}
-						& h2 {
-							font-family: 'Lexend Deca';
-							font-style: normal;
-							font-weight: 600;
-							font-size: 20px;
-							line-height: 25px;
-							display: flex;
-							align-items: flex-end;
-							text-transform: capitalize;
-							color: #1AC073;
-						}
-						& .item {
-							margin-top: 20px;
-							padding: 15px;
-							width: 30vw;
-							display: flex;
-							justify-content: space-between;
-							align-items: center;
-							font-family: 'Lexend Deca';
-							font-style: normal;
-							font-weight: 700;
-							font-size: 12px;
-							line-height: 150%;
-							letter-spacing: 0.5px;
-							color: #223263;
-							& input[type="checkbox"] {
-								width: 25px;
-								height: 25px;
-							}
-							& label {
-								display: flex;
-								justify-content: center;
-								align-items: center;
-							}
-							& i {
-								font-size: 25px;
-								margin-right: 10px;
-								color: #1AC073;
-							}
-						}
-					}
-					&-right {
-						display: flex;
-						flex-direction: column;
-						width: 35vw;
-						justify-content: space-between;
-						& input[type="text"] {
-							padding: 15px;
-							border: none;
-							border-radius: 10px;
-							background-color: $sub-color;
-							font-size: 20px;
-							&:focus {
-								outline: none;
-							}
-						}
-						&-address {
-							position: relative;
-							bottom: 40px;
-							height: 150px;
-						}
-						&-phone {
-							position: relative;
-							bottom: 80px;
-						}
-					}
-					&-button {
-						margin-top: 40px;
-						display: flex;
-						justify-content: center;
-						& button {
-							font-family: 'Lexend Deca';
-							font-style: normal;
-							font-weight: 800;
-							font-size: 24px;
-							line-height: 30px;
-							display: flex;
-							align-items: center;
-							text-align: center;
-							letter-spacing: -0.02em;
-							color: #FFFFFF;
-							background-color: #1AC073;
-							padding: 20px 80px;
-							border: none;
-							border-radius: 10px;
-							cursor: pointer;
-							&:hover {
-								opacity: 0.8;
-							}
-						}
-					}
-				}
-				&-visa {
-					box-sizing: border-box;
-					position: absolute;
-					display: flex;
-					width: 80vw;
-					justify-content: space-between;
-					align-items: center;
-					bottom: 120vh;
-					&-img {
-						position: relative;
-						left: -20px;
-						bottom: 80px;
-					}
-					&-info {
-						position: relative;
-						right: 20px;
-						width: 30vw;
-						top: -60px;
-						padding: 20px;
-						display: flex;
-						flex-direction: column;
-						justify-content: space-between;
-						& .expire {
-							display: flex;
-							& .item {
-								width: 9.5vw;
-								margin-right: 20px;
-							}
-						}
-						& input[type="text"] {
-							padding: 15px;
-							border: none;
-							border-radius: 10px;
-							background-color: $sub-color;
-							font-size: 20px;
-							font-family: 'Lexend Deca';
-							font-style: normal;
-							font-weight: 400;
-							font-size: 16px;
-							line-height: 20px;
-							letter-spacing: -0.02em;
-							color: #999999;
-							&:focus {
-								outline: none;
-							}
-						}
-					}
-					& .confirm {
-						display: flex;
-						align-items: center;
-						& p {
-							margin-left: 10px;
-							font-family: 'Lexend Deca';
-							font-style: normal;
-							font-weight: 400;
-							font-size: 14px;
-							line-height: 19px;
-							color: #999999;
-						}
-						& input[type="checkbox"] {
-							height: 20px;
-							width: 20px;
-						}
-					}
-				}
-				&-success {
-					position: absolute;
-					right: 41vw;
-					bottom: 140vh;
-					display: flex;
-					flex-direction: column;
-					justify-content: center;
-					align-items: center;
-					& div {
-						width: 130px;
-						height: 130px;
-						background-color: #1AC073;
-						border-radius: 55px;
-						display: flex;
-						justify-content: center;
-						align-items: center;
-						margin-bottom: 30px;
-						box-shadow: 0px 10px 30px rgba(64, 191, 255, 0.24);
-						& i {
-							font-size: 70px;
-							color: white;
-						}
-					}
-					& p {
-						font-family: 'Lexend Deca';
-						font-style: normal;
-						font-weight: 700;
-						font-size: 24px;
-						line-height: 150%;
-						letter-spacing: 0.5px;
-						color: #223263;
-					}
-				}
-			}
-		}
-	}
-}

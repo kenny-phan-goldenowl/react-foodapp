@@ -5,13 +5,13 @@ import { useDispatch } from 'react-redux';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 
-import NavBar from 'components/Navbar/NavBar';
 import Footer from 'components/Footer';
 import CartItem from 'components/CartItem/CartItem';
 import { background, visa } from 'assets';
 import { choosenDish } from 'global/redux/reducers/selector';
 import { auth, db } from 'services/firebase';
 import { removeItem, removeAllItem } from 'global/redux/actions/cart';
+import Header from 'components/Header';
 
 import './style.scss';
 
@@ -21,6 +21,7 @@ function Payment() {
   const [check, setCheck] = useState(1);
   const [dish, setDish] = useState([]);
   const [userId, setUserId] = useState('');
+  const [userName, setUserName] = useState('');
   const [user, loading] = useAuthState(auth);
   const cartItems = useSelector(choosenDish);
   const dishRef = collection(db, 'dishes');
@@ -50,6 +51,7 @@ function Payment() {
       const doc = await getDocs(q);
       const data = doc.docs[0].data();
       setUserId(data.uid);
+      setUserName(data.name);
     } catch (error) {
       console.error(error);
       alert('Error while fetching data');
@@ -100,26 +102,26 @@ function Payment() {
 
   return (
     <div>
-      <NavBar icon1='bx bx-search' icon2='bx bx-shopping-bag' />
-      <div className='home__top-menu'>
-        <div className='home__top-menu-left'>
+      <Header userName={userName} />
+      <div className='landing__top'>
+        <div className='landing__top-title'>
           <div>
-            <p>
+            <p className='title'>
 							Authentic local <br />
 							food in Tbay
             </p>
-            <p>
+            <p className='description'>
 							TbayEAT is a courier serivce in which authentic home cook <br />
 							food is delivered to a customer
             </p>
           </div>
-          <div className='home__top-menu-left-search'>
+          <div className='landing__top-title-search'>
             <input type='text' placeholder='Search food you love' />
             <button>Search</button>
           </div>
         </div>
-        <div className='home__top-menu-right'>
-          <img src={background} alt='dude cooking' />
+        <div className='landing__top-img'>
+          <img src={background} alt='background img' />
         </div>
       </div>
       <div className='payment'>
@@ -218,7 +220,6 @@ function Payment() {
               <p
                 className='page'
                 style={{ background: current >= 1 ? '#1AC073' : '#DFDEDE' }}
-                onClick={() => setCurrent(1)}
               >
 								1
               </p>
@@ -226,7 +227,6 @@ function Payment() {
               <p
                 style={{ background: current >= 2 ? '#1AC073' : '#DFDEDE' }}
                 className='page'
-                onClick={() => setCurrent(2)}
               >
 								2
               </p>
@@ -234,7 +234,6 @@ function Payment() {
               <p
                 style={{ background: current >= 3 ? '#1AC073' : '#DFDEDE' }}
                 className='page'
-                onClick={() => setCurrent(3)}
               >
 								3
               </p>
@@ -242,7 +241,7 @@ function Payment() {
           </div>
           {/*--------------------------Page 1--------------------------*/}
           <div
-            style={{ visibility: current === 1 ? 'visible' : 'hidden' }}
+            style={{ display: current === 1 ? '' : 'none' }}
             className='payment__charge-form-info'
           >
             <div className='payment__charge-form-info-left'>
@@ -319,7 +318,7 @@ function Payment() {
           </div>
           {/*--------------------------Page 2--------------------------*/}
           <div
-            style={{ visibility: current === 2 ? 'visible' : 'hidden' }}
+            style={{ display: current === 2 ? '' : 'none' }}
             className='payment__charge-form-visa'
           >
             <div className='payment__charge-form-visa-img'>
@@ -328,8 +327,8 @@ function Payment() {
             <form className='payment__charge-form-visa-info'>
               <input type='text' placeholder='Card Number' />
               <div className='expire'>
-                <input className='item' type='text' placeholder='Expiry' />
-                <input className='item' type='text' placeholder='CVV' />
+                <input type='text' placeholder='Expiry' />
+                <input type='text' placeholder='CVV' />
               </div>
               <input type='text' placeholder='Holder Number' />
               <div className='confirm'>
@@ -340,7 +339,7 @@ function Payment() {
           </div>
           {/*--------------------------Page 3--------------------------*/}
           <div
-            style={{ visibility: current === 3 ? 'visible' : 'hidden' }}
+            style={{ display: current === 3 ? '' : 'none' }}
             className='payment__charge-form-success'
           >
             <div>
@@ -354,7 +353,7 @@ function Payment() {
         </div>
       </div>
       <div>
-        <Footer />
+        <Footer userName={userName} />
       </div>
     </div>
   );

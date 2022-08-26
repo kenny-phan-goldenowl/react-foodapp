@@ -122,7 +122,7 @@ function Profile() {
 
   return (
     <div>
-      <Header />
+      <Header userName={userName} />
       <div className='profile'>
         <div className='profile__img'>
           <img className='img1' src={truck} alt='background img' />
@@ -196,7 +196,7 @@ function Profile() {
           </div>
         </div>
       </div>
-      <Footer />
+      <Footer userName={userName} />
     </div>
   );
 }

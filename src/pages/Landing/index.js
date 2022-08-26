@@ -75,14 +75,14 @@ function Home() {
 
   return (
     <div>
-      <Header setCart={setCart} />
+      <Header setCart={setCart} userName={name} />
       <div className='landing'>
         <div className='landing__top'>
           <div className='landing__top-title'>
             <div>
               <p className='title'>
 								Authentic local <br />
-								food in Tbay {name}
+								food in Tbay
               </p>
               <p className='description'>
 								TbayEAT is a courier serivce in which authentic home cook <br />
@@ -109,7 +109,7 @@ function Home() {
               <button>Coming</button>
             </div>
           </div>
-          <div className='home__middle-filters'>
+          <div className='landing__middle-filters'>
             <select name='dishes' id='dishes'>
               <option value='' disabled hidden>
 								Filters
@@ -119,7 +119,7 @@ function Home() {
               <option value='rice'>Rice</option>
               <option value='drink'>Drink</option>
             </select>
-            <div className='home__middle-filters-dishes'>
+            <div className='landing__middle-filters-dishes'>
               {dish.map((item) => (
                 <Dish
                   key={item.id}
@@ -136,7 +136,7 @@ function Home() {
               ))}
             </div>
           </div>
-          <div className='home__middle-more'>
+          <div className='landing__middle-more'>
             <button>+ Load more...</button>
           </div>
         </div>
@@ -168,16 +168,16 @@ function Home() {
                 />
               ))}
             </div>
-            <div style={{ position: 'relative', bottom: '40px' }}>
-              <div className='yourcart__popup-sub'>
+            <div className='yourcart__popup-result'>
+              <div className='yourcart__popup-result-sub'>
                 <p>Subtotal</p>
                 <p>$99.8</p>
               </div>
-              <div className='yourcart__popup-ship'>
+              <div className='yourcart__popup-result-ship'>
                 <p>Shipping fee</p>
                 <p>$20</p>
               </div>
-              <div className='yourcart__popup-total'>
+              <div className='yourcart__popup-result-total'>
                 <p>TOTAL</p>
                 <p>$118</p>
               </div>
@@ -191,7 +191,7 @@ function Home() {
           </div>
         </div>
       </div>
-      <Footer />
+      <Footer userName={name} />
     </div>
   );
 }
