@@ -1,9 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { getDocs, collection, addDoc, query, where } from 'firebase/firestore';
+import { useDispatch } from 'react-redux';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
 
 import NavBar from 'components/Navbar/NavBar';
 import Footer from 'components/Footer';
 import CartItem from 'components/CartItem/CartItem';
-import { background, dish2, dish3, dish8, visa } from 'assets';
+import { background, visa } from 'assets';
+import { choosenDish } from 'global/redux/reducers/selector';
+import { auth, db } from 'services/firebase';
+import { removeItem, removeAllItem } from 'global/redux/actions/cart';
 
 import './style.scss';
 
@@ -11,6 +19,84 @@ function Payment() {
   const [toggle, setToggle] = useState(false);
   const [current, setCurrent] = useState(0);
   const [check, setCheck] = useState(1);
+  const [dish, setDish] = useState([]);
+  const [userId, setUserId] = useState('');
+  const [user, loading] = useAuthState(auth);
+  const cartItems = useSelector(choosenDish);
+  const dishRef = collection(db, 'dishes');
+  const orderRef = collection(db, 'orders');
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const res = dish.filter((item) => cartItems.includes(item.id));
+  const choosenItem = [...res];
+  res.forEach((item) => {
+    choosenItem[cartItems.indexOf(item.id)] = item;
+  });
+
+  const onRemove = (data) => {
+    dispatch(removeItem(data));
+  };
+
+  useEffect(() => {
+    if (loading) return;
+    if (!user) return navigate('/');
+    fetchUserId();
+  }, [user, loading]);
+
+  const fetchUserId = async () => {
+    try {
+      const q = query(collection(db, 'users'), where('uid', '==', user?.uid));
+      const doc = await getDocs(q);
+      const data = doc.docs[0].data();
+      setUserId(data.uid);
+    } catch (error) {
+      console.error(error);
+      alert('Error while fetching data');
+    }
+  };
+
+  const addOrder = (id, uid, dishes) => {
+    addDoc(orderRef, {
+      id    : id,
+      uid   : uid,
+      dishes: dishes,
+    }).then(() => console.log('Order added'));
+  };
+
+  const onConfirm = () => {
+    if (cartItems.length === 0) {
+      alert('Orders cant be empty');
+      setToggle(false);
+      setCurrent(3);
+    }
+    setCurrent((prev) => prev + 1);
+    if (current === 3) {
+      if (cartItems) {
+        dispatch(removeAllItem(cartItems.length));
+        setToggle(false);
+        addOrder(
+          Math.floor(userId.length * new Date().getSeconds),
+          userId,
+          cartItems
+        );
+        alert('Payment success');
+      }
+    }
+  };
+
+  // get dish list
+  useEffect(() => {
+    getDocs(dishRef)
+      .then((snapshot) => {
+        snapshot.docs.forEach((doc) => {
+          setDish((prev) => [...prev, doc.data()]);
+        });
+      })
+      .catch((err) => console.error(err.message));
+  }, []);
+  console.log('persist check', cartItems);
+  console.log('picked item: ', choosenItem);
 
   return (
     <div>
@@ -50,16 +136,16 @@ function Payment() {
           </p>
         </div>
         <div className='payment__items'>
-          <CartItem />
-          <CartItem
-            img={dish2}
-            name='Chicken'
-            userName='Kenny'
-            price='30'
-            qty='10'
-          />
-          <CartItem img={dish3} name='Meat' price='20' qty='23' />
-          <CartItem img={dish8} name='Sauce' price='50' qty='4' />
+          {choosenItem.map((item, index) => (
+            <CartItem
+              key={item.id}
+              img={item.img_url}
+              name={item.name}
+              price={item.price}
+              onRemove={onRemove}
+              id={index}
+            />
+          ))}
         </div>
         <div className='payment__line'></div>
         <div className='payment__total'>
@@ -104,9 +190,6 @@ function Payment() {
             </button>
           </div>
         </div>
-      </div>
-      <div>
-        <Footer />
       </div>
       <div
         className='payment__charge'
@@ -266,16 +349,12 @@ function Payment() {
             <p>Success</p>
           </div>
           <div className='payment__charge-form-info-button'>
-            <button
-              onClick={() => {
-                setCurrent((prev) => prev + 1);
-                if (current === 3) setToggle(false);
-              }}
-            >
-							Confirm
-            </button>
+            <button onClick={onConfirm}>Confirm</button>
           </div>
         </div>
+      </div>
+      <div>
+        <Footer />
       </div>
     </div>
   );

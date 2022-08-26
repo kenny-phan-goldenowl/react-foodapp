@@ -6,32 +6,30 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Header from 'components/Header';
 import Footer from 'components/Footer';
-import { background } from 'assets';
+import CartItem from 'components/CartItem/CartItem';
 import Dish from 'components/Dishes/Dish';
 import { auth, db } from 'services/firebase';
-import CartItem from 'components/CartItem/CartItem';
-import { dishList } from 'global/redux/reducers/selector';
-import { addItem } from 'global/redux/actions/cart';
+import { background } from 'assets';
+import { choosenDish } from 'global/redux/reducers/selector';
+import { addItem, removeItem } from 'global/redux/actions/cart';
 
 import './style.scss';
 
 function Home() {
   const dispatch = useDispatch();
-  const cartItems = useSelector(dishList);
+  const cartItems = useSelector(choosenDish);
   const navigate = useNavigate();
   const [user, loading] = useAuthState(auth);
   const [dish, setDish] = useState([]);
   const [name, setName] = useState('');
   const [cart, setCart] = useState(false);
   const dishRef = collection(db, 'dishes');
+
   const res = dish.filter((item) => cartItems.includes(item.id));
-
-  const onAdd = (data) => {
-    dispatch(addItem(data));
-  };
-
-  console.log('item choosen: ', cartItems);
-  console.log('filtered item', res);
+  const choosenItem = [...res];
+  res.forEach((item) => {
+    choosenItem[cartItems.indexOf(item.id)] = item;
+  });
 
   const fetchUserName = async () => {
     try {
@@ -43,6 +41,14 @@ function Home() {
       console.error(error);
       alert('Error while fetching data');
     }
+  };
+
+  const onAdd = (data) => {
+    dispatch(addItem(data));
+  };
+
+  const onRemove = (data) => {
+    dispatch(removeItem(data));
   };
 
   // get dish list
@@ -62,6 +68,8 @@ function Home() {
     fetchUserName();
   }, [user, loading]);
 
+  console.log('item choosen: ', cartItems);
+  console.log(choosenItem);
   console.log(name);
   console.log(user);
 
@@ -121,7 +129,8 @@ function Home() {
                   rating={item.rating}
                   duration={item.time}
                   discount={item.discount}
-                  id={item.id}
+                  dishId={item.id}
+                  dishIdList={dish.map((item) => item.id)}
                   onAdd={onAdd}
                 />
               ))}
@@ -147,26 +156,17 @@ function Home() {
               </p>
             </div>
             <div className='yourcart__popup-item'>
-              {/*{dish.map(item => (
+              {choosenItem.map((item, index) => (
                 <CartItem
                   key={item.id}
                   img={item.img_url}
                   name={item.name}
                   price={item.price}
                   userName={name}
+                  onRemove={onRemove}
+                  id={index}
                 />
-              ))}*/}
-              {dish
-                .filter((item) => cartItems.includes(item.id))
-                .map((item) => (
-                  <CartItem
-                    key={item.id}
-                    img={item.img_url}
-                    name={item.name}
-                    price={item.price}
-                    userName={name}
-                  />
-                ))}
+              ))}
             </div>
             <div style={{ position: 'relative', bottom: '40px' }}>
               <div className='yourcart__popup-sub'>

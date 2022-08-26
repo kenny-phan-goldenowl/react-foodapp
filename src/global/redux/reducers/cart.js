@@ -22,6 +22,15 @@ const cart = (state = initialState, action) => {
     };
   }
 
+  case Cart.REMOVE_ALL_ITEM: {
+    const newList = [...state.dishesId];
+    newList.splice(0, action.payload);
+    return {
+      ...state,
+      dishesId: newList,
+    };
+  }
+
   default:
     return state;
   }

@@ -1,1 +1,1 @@
-export const dishList = (state) => state.dishesId;
+export const choosenDish = (state) => state.dishesId;

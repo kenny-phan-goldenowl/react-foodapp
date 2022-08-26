@@ -9,8 +9,8 @@ function Dish({
   rating = '5',
   duration = '20',
   discount,
+  dishId,
   onAdd,
-  id,
 }) {
   return (
     <div className='dish__container'>
@@ -34,7 +34,7 @@ function Dish({
           </div>
           <div className='dish__details-time'>{duration} min</div>
           <div className='dish__details-add'>
-            <i onClick={() => onAdd(id)} className='bx bx-plus'></i>
+            <i onClick={() => onAdd(dishId)} className='bx bx-plus'></i>
           </div>
         </div>
       </div>

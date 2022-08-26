@@ -10,4 +10,9 @@ const removeItem = (data) => ({
   payload: data,
 });
 
-export { addItem, removeItem };
+const removeAllItem = (data) => ({
+  type   : Cart.REMOVE_ALL_ITEM,
+  payload: data,
+});
+
+export { addItem, removeItem, removeAllItem };
