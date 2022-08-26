@@ -18,7 +18,7 @@ function SignUpForm() {
   const signUp = () => {
     if (!name) alert('Enter name');
     if (password === cpassword && password) {
-      signUpMail(name, email, password);
+      signUpMail(name, email, password, phone);
       navigate('/signIn');
     }
   };

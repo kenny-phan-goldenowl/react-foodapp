@@ -47,7 +47,7 @@ export const signInMail = async (email, password) => {
 };
 
 // Google sign in method
-// Bug currently check later----------------------------------------------------------------------------
+// Bug currently -> check later----------------------------------------------------------------------------
 const googleProvider = new GoogleAuthProvider();
 export const signInWithGoogle = async () => {
   try {
@@ -71,7 +71,7 @@ export const signInWithGoogle = async () => {
 };
 
 // Sign up using email & password
-export const signUpMail = async (name, email, password) => {
+export const signUpMail = async (name, email, password, phone = '') => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
@@ -81,6 +81,8 @@ export const signUpMail = async (name, email, password) => {
       authProvider: 'local',
       email,
       password,
+      phone       : phone,
+      dob         : '',
     });
   } catch (error) {
     console.error(error);

@@ -17,6 +17,12 @@ function Add() {
   const [order, setOrder] = useState([]);
   const [user, setUser] = useState([]);
   const [id, setId] = useState('');
+  // --------------------------------------------
+  //const [userDetails, setUserDetails] = useState('')
+  //db.collection('users').doc().get()
+  //  .then(snapshot => setUserDetails(snapshot.data()))
+  //console.log(userDetails)
+  // Add a new document in collection "cities"
 
   // get User ID -----------------------------------------------
   const fecthUserId = async () => {

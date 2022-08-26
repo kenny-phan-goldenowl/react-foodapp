@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 
-import { auth, others } from 'global/redux/reducers';
+import { auth, cart } from 'global/redux/reducers';
 
 const appReducer = combineReducers({
   auth,
-  others,
+  cart,
 });
 
 const rootReducer = (state, action) => {

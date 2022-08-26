@@ -21,36 +21,46 @@ import './style.scss';
 function Profile() {
   const navigate = useNavigate();
   const [user, loading] = useAuthState(auth);
-  const [data, setData] = useState([]);
+  const [order, setOrder] = useState([]);
   const [id, setId] = useState('');
+  const [userName, setUserName] = useState('');
+  const [userEmail, setUserEmail] = useState('');
+  const [userPhone, setUserPhone] = useState('');
+  const [userDob, setUserDob] = useState('');
+  const [users, setUsers] = useState([]);
   const [toggle, setToggle] = useState(true);
   const [dish, setDish] = useState([]);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [dob, setDob] = useState('');
+  const [userDocId, setUserDocId] = useState([]);
   const orderRef = collection(db, 'orders');
   const userRef = collection(db, 'users');
   const dishRef = collection(db, 'dishes');
-  const updateInfoRef = doc(db, 'users', 'a0sAWN8IU70iWXYZjwxt');
 
-  const fetchUserId = async () => {
+  const fetchUserInfo = async () => {
     try {
       const q = query(userRef, where('uid', '==', user.uid));
       const doc = await getDocs(q);
       const data = doc.docs[0].data();
       setId(data.uid);
+      setUserName(data.name);
+      setUserEmail(data.email);
+      setUserPhone(data.phone);
+      setUserDob(data.dob);
     } catch (error) {
       console.error(error);
       alert('Error while fetching data');
     }
   };
 
-  const editInfo = (name, email, phone, dob) => {
-    if ((name, email, phone, dob)) {
+  const editInfo = async (name, email, phone, dob) => {
+    if ((name, phone, dob)) {
+      const index = users.map((item) => item.uid).indexOf(id);
+      const updateInfoRef = doc(db, 'users', userDocId[index]);
       updateDoc(updateInfoRef, {
         name : name,
-        email: email,
         phone: phone,
         dob  : dob,
       }).then(() => alert('Edit success'));
@@ -63,17 +73,36 @@ function Profile() {
     }
   };
 
+  // get all user document id
+  useEffect(() => {
+    getDocs(userRef).then((snapshot) => {
+      snapshot.docs.forEach((doc) => {
+        setUserDocId((prev) => [...prev, doc.id]);
+      });
+    });
+  }, []);
+
+  // Check if user is logged in
   useEffect(() => {
     if (loading) return;
     if (!user) return navigate('/');
-    fetchUserId();
+    fetchUserInfo();
   }, [user, loading]);
+
+  // get users list
+  useEffect(() => {
+    getDocs(userRef).then((snapshot) => {
+      snapshot.docs.forEach((doc) => {
+        setUsers((prev) => [...prev, doc.data()]);
+      });
+    });
+  }, []);
 
   // get orders list
   useEffect(() => {
     getDocs(orderRef).then((snapshot) => {
       snapshot.docs.forEach((doc) => {
-        setData((prev) => [...prev, doc.data()]);
+        setOrder((prev) => [...prev, doc.data()]);
       });
     });
   }, []);
@@ -87,9 +116,9 @@ function Profile() {
     });
   }, []);
 
-  console.log(user);
-  console.log(id);
-  console.log(loading);
+  console.log('User:', user);
+  console.log('User Document ID list:', userDocId);
+  console.log('User ID: ', id);
 
   return (
     <div>
@@ -127,24 +156,28 @@ function Profile() {
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
+          <label>{userName}</label>
           <input
             type='text'
             placeholder='Email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+          <label>{userEmail}</label>
           <input
             type='text'
             placeholder='Phone Number'
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
           />
+          <label>{userPhone}</label>
           <input
             type='text'
             placeholder='Date Of Birth'
             value={dob}
             onChange={(e) => setDob(e.target.value)}
           />
+          <label>{userDob}</label>
           <button onClick={() => editInfo(name, email, phone, dob)}>
 						Edit
           </button>
@@ -155,7 +188,7 @@ function Profile() {
         >
           <h1>Order History</h1>
           <div style={{ overFlow: 'auto' }}>
-            {data
+            {order
               .filter((item) => item.uid === id)
               .map((item) => (
                 <Bill key={item.id} dishesInOrder={item.dishes} dishes={dish} />

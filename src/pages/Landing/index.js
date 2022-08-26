@@ -2,25 +2,36 @@ import { collection, getDocs, query, where } from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Header from 'components/Header';
 import Footer from 'components/Footer';
-import { background, dish3, dish6 } from 'assets';
+import { background } from 'assets';
 import Dish from 'components/Dishes/Dish';
 import { auth, db } from 'services/firebase';
 import CartItem from 'components/CartItem/CartItem';
+import { dishList } from 'global/redux/reducers/selector';
+import { addItem } from 'global/redux/actions/cart';
 
 import './style.scss';
 
 function Home() {
-  const [count, setCount] = useState(2);
-  const [count1, setCount1] = useState(5);
+  const dispatch = useDispatch();
+  const cartItems = useSelector(dishList);
   const navigate = useNavigate();
   const [user, loading] = useAuthState(auth);
   const [dish, setDish] = useState([]);
   const [name, setName] = useState('');
   const [cart, setCart] = useState(false);
   const dishRef = collection(db, 'dishes');
+  const res = dish.filter((item) => cartItems.includes(item.id));
+
+  const onAdd = (data) => {
+    dispatch(addItem(data));
+  };
+
+  console.log('item choosen: ', cartItems);
+  console.log('filtered item', res);
 
   const fetchUserName = async () => {
     try {
@@ -110,6 +121,8 @@ function Home() {
                   rating={item.rating}
                   duration={item.time}
                   discount={item.discount}
+                  id={item.id}
+                  onAdd={onAdd}
                 />
               ))}
             </div>
@@ -134,22 +147,26 @@ function Home() {
               </p>
             </div>
             <div className='yourcart__popup-item'>
-              <CartItem
-                img={dish3}
-                name='Meat'
-                price='20'
-                qty={count1}
-                add={() => setCount1((prev) => prev + 1)}
-                minus={() => setCount1((prev) => prev - 1)}
-              />
-              <CartItem
-                img={dish6}
-                name='Chicken'
-                price='20'
-                qty={count}
-                add={() => setCount((prev) => prev + 1)}
-                minus={() => setCount((prev) => prev - 1)}
-              />
+              {/*{dish.map(item => (
+                <CartItem
+                  key={item.id}
+                  img={item.img_url}
+                  name={item.name}
+                  price={item.price}
+                  userName={name}
+                />
+              ))}*/}
+              {dish
+                .filter((item) => cartItems.includes(item.id))
+                .map((item) => (
+                  <CartItem
+                    key={item.id}
+                    img={item.img_url}
+                    name={item.name}
+                    price={item.price}
+                    userName={name}
+                  />
+                ))}
             </div>
             <div style={{ position: 'relative', bottom: '40px' }}>
               <div className='yourcart__popup-sub'>
