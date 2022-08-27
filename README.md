@@ -4,3 +4,4 @@
 * Precise payment process
 * Improve user experience
 * Add more auth type: Facebook, Instagram, Google, etc
+* Add more dishes
