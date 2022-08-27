@@ -1,175 +1,121 @@
 $sub-color: #efefef;
+@import 'assets/scss/mixin.scss';
 
-.dish__container {
-	width: 20%;
-	box-sizing: border-box;
-	position: relative;
+.dish {
+	margin: 0 35px 30px 0;
+	width: 20vw;
+	border-radius: 13px;
 	display: flex;
 	flex-direction: column;
-	font-family: 'ABeeZee';
-	font-style: normal;
-	font-weight: 400;
-	font-size: 16px;
-	margin-bottom: 40px;
-	margin-right: 50px;
-	& .dish__discount {
+	@include responsive(tablet) {
+		margin: 0 43px 30px 0;
+		width: 24vw;
+	}
+	&__discount {
 		position: absolute;
-		background-color: #F3BA00;
-		padding: 10px 5px 5px 5px;
-		font-size: 12px;
+		background-color:#F3BA00;
+		padding: 5px;
 		border-radius: 8px 0 0 0;
-		letter-spacing: -0.012em;
-	}
-	& img {
-		width: 15vw;
-		cursor: pointer;
-	}
-	& .dish__details {
-		position: relative;
-		width: 13.8vw;
-		background-color: white;
-		display: flex;
-		flex-direction: column;
-		padding: 15px 12px;
-		border-radius: 0 0 10px 10px;
-	}
-	& .dish__details-top {
-		display: flex;
-		justify-content: space-between;
-	}
-	& .dish__details-bottom {
-		margin-top: 10px;
-		font-size: 12px;
-		width: 100%;
-		display: flex;
-		justify-content: space-between;
-	}
-	& .dish__details-rating {
-		background-color: $sub-color;
-		border-radius: 7px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		padding: 0 6px;
-		cursor: pointer;
-	}
-	& .dish__details-rating i {
-		margin-right: 3px;
-		font-size: 15px;
-	}
-	& .dish__details-time {
-		position: relative;
-		right: 40px;
-		background-color: $sub-color;
-		border-radius: 7px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		padding: 0 6px;
-	}
-	& .dish__details-add {
-		background-color: #F3BA00;
-		color: white;
-		font-size: 20px;
-		border-radius: 8px;
-		margin-right: 10px;
-		padding: 4px;
-		display: flex;
-		justify-content: center;
-		align-items: center	;
-		cursor: pointer;
-	}
-	& .dish__details-add:hover, .dish__details-rating:hover {
-		opacity: 0.7;
-	}
-}
-
-@media only screen and (min-width: 738px) and (max-width: 1400px) {
-	.dish__container {
-		width: 17%;
-		box-sizing: border-box;
-		position: relative;
-		display: flex;
-		flex-direction: column;
 		font-family: 'ABeeZee';
 		font-style: normal;
 		font-weight: 400;
-		font-size: 16px;
-		margin-bottom: 40px;
-		margin-right: 50px;
-		& .dish__discount {
-			position: absolute;
-			background-color: #F3BA00;
-			padding: 5px;
-			font-size: 12px;
-			border-radius: 8px 0 0 0;
-			letter-spacing: -0.012em;
+		font-size: 12px;
+		line-height: 20px;
+		letter-spacing: -0.012em;
+	}
+	&__img {
+		height: 40vh;
+		border-radius: 13px 13px 0 0;
+		@include responsive(tablet) {
+			height: 20vh;
 		}
 		& img {
+			border-radius: 13px 13px 0 0;
 			width: 100%;
-			cursor: pointer;
+			height: 100%;
+			object-fit: cover;
 		}
-		& .dish__details {
-			position: relative;
-			width: 85%;
-			background-color: white;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-			padding: 15px 12px;
-			border-radius: 0 0 10px 10px;
-		}
-		& .dish__details-top {
+	}
+	&__details {
+		border-radius: 0 0 13px 13px;
+		background-color: white;
+		padding: 10px 15px;
+		font-family: 'ABeeZee';
+		font-style: normal;
+		font-weight: 400;
+		line-height: 20px;
+		letter-spacing: -0.012em;
+		color: #1B1C21;
+		&-top {
 			display: flex;
 			justify-content: space-between;
+			padding: 10px 0;
+			font-size: 20px;
+			@include responsive(tablet) {
+				font-size: 14px;
+			}
 		}
-		& .dish__details-bottom {
-			margin-top: 10px;
-			font-size: 10px;
-			width: 100%;
+		&-bottom {
 			display: flex;
 			justify-content: space-between;
-		}
-		& .dish__details-rating {
-			background-color: $sub-color;
-			border-radius: 7px;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			padding: 0 6px;
-			cursor: pointer;
-			display: none;
-		}
-		& .dish__details-rating i {
-			margin-right: 3px;
-			font-size: 13px;
-		}
-		& .dish__details-time {
-			position: relative;
-			right: 40px;
-			background-color: $sub-color;
-			border-radius: 7px;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			padding: 0 6px;
-			display: none;
-		}
-		& .dish__details-add {
-			background-color: #F3BA00;
-			color: white;
-			font-size: 14px;
-			border-radius: 8px;
-			margin-right: 10px;
-			padding: 4px;
-			display: flex;
-			justify-content: center;
-			align-items: center	;
-			cursor: pointer;
-		}
-		& .dish__details-add:hover, .dish__details-rating:hover {
-			opacity: 0.7;
+			padding: 10px 0;
+			font-size: 16px;
+			@include responsive(tablet) {
+				padding: 0;
+				height: 3.5vh;
+			}
+			&-rating {
+				display: flex;
+				align-items: center;
+				@include responsive(tablet) {
+					width: 50%;
+					font-size: 10px;
+				}
+				&-start {
+					background-color: #F7F8FA;
+					padding: 10px;
+					border-radius: 15px;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					margin-right: 20px;
+					@include responsive(tablet) {
+						padding: 5px;
+						border-radius: 10px;
+						margin-right: 10%;
+					}
+				}
+				&-time {
+					background-color: #F7F8FA;
+					padding: 10px;
+					border-radius: 15px;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					@include responsive(tablet) {
+						border-radius: 10px;
+						padding: 5px;
+					}
+				}
+			}
+			&-add {
+				background-color: #F3BA00;
+				color: white;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-size: 35px;
+				padding-left: 2px;
+				border-radius: 10px;
+				cursor: pointer;
+				&:hover {
+					opacity: 0.8;
+				}
+				@include responsive(tablet) {
+					font-size: 20px;
+					padding: 0 5px;
+				}
+			}
 		}
 	}
 }

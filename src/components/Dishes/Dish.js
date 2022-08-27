@@ -13,7 +13,7 @@ function Dish({
   onAdd,
 }) {
   return (
-    <div className='dish__container'>
+    <div className='dish'>
       <div
         style={{ visibility: discount ? 'visible' : 'hidden' }}
         className='dish__discount'
@@ -29,11 +29,13 @@ function Dish({
           <p className='dish__details-price'>${price}</p>
         </div>
         <div className='dish__details-bottom'>
-          <div className='dish__details-rating'>
-            <i className='bx bxs-star'></i> {rating}
+          <div className='dish__details-bottom-rating'>
+            <div className='dish__details-bottom-rating-start'>
+              <i className='bx bxs-star'></i> {rating}
+            </div>
+            <div className='dish__details-bottom-rating-time'>{duration}m</div>
           </div>
-          <div className='dish__details-time'>{duration} min</div>
-          <div className='dish__details-add'>
+          <div className='dish__details-bottom-add'>
             <i onClick={() => onAdd(dishId)} className='bx bx-plus'></i>
           </div>
         </div>

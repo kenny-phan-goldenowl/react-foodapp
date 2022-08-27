@@ -97,6 +97,7 @@ $sub-color: #F7F8FA;
 		}
 	}
 	&__middle {
+		background-color: #F7F8FA;
 		padding: 100px;
 		height: 100%;
 		display: flex;
@@ -173,6 +174,10 @@ $sub-color: #F7F8FA;
 				display: flex;
 				flex-flow: row wrap;
 				height: 100%;
+				width: 90vw;
+				@include responsive(tablet) {
+					padding-left: 15px;
+				}
 			}
 		}
 		&-more {
@@ -249,17 +254,27 @@ $sub-color: #F7F8FA;
 				font-size: 16px;
 				line-height: 20px;
 				color: #22262A;
+				@include responsive(tablet) {
+					font-size: 14px;
+				}
 				&-qty {
 					position: relative;
+					left: 5.5vw;
+					@include responsive(tablet) {
+						left: 2.5vw;
+					}
 				}
 				&-price {
 					position: relative;
+					left: 11.5vw;
+					@include responsive(tablet) {
+						left: 5.5vw;
+					}
 				}
 			}
 			&-item {
 				height: 45vh;
 				margin: 30px 0;
-				padding: 0 30px;
 				border-radius: 5px;
 				overflow: auto;
 				display: flex;

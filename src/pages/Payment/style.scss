@@ -21,11 +21,9 @@ $sub-color: #F7F8FA;
 		color: #1AC073;
 	}
 	&__details {
-		background-color: red;
 		box-sizing: border-box;
 		position: relative;
 		margin: 40px 0;
-		padding: 0 40px;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -35,22 +33,29 @@ $sub-color: #F7F8FA;
 		font-size: 16px;
 		line-height: 20px;
 		color: #22262A;
+		@include responsive(tablet) {
+			font-size: 14px;
+		}
 		&-qty {
 			position: relative;
+			left: 13vw;
+			@include responsive(tablet) {
+				left: 5.5vw;
+			}
 		}
 		&-price {
 			position: relative;
-		}
-		&-unit {
-			position: relative;
+			left: 26vw;
+			@include responsive(tablet) {
+				left: 9vw;
+			}
 		}
 	}
 	&__items {
-		background-color: red;
 		overflow: auto;
 	}
 	&__line {
-		margin: 50px 0;
+		margin: 20px 0 40px 0;
 		width: 100%;
 		height: 2px;
 		background-color: rgb(233, 233, 233);

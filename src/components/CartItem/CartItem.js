@@ -23,17 +23,19 @@ function CartItem({
   return (
     <div className='cart-item'>
       <div className='cart-item__details'>
-        <img className='cart-item__details-img' src={img} alt='food img' />
+        <div className='cart-item__details-img'>
+          <img src={img} alt='food img' />
+        </div>
         <div className='cart-item__details-info'>
           <div>
             <p className='name'>{name}</p>
             <p className='des'>{description}</p>
           </div>
-          <p className='user'>Added by {userName}</p>
+          <p className='user'>{userName} added</p>
         </div>
       </div>
       <div className='cart-item__add'>
-        <p className='cart-item__total-price'>${Math.floor(price * count)}</p>
+        <p className='cart-item__add-price'>${Math.floor(price * count)}</p>
         <div className='cart-item__add-adjust'>
           <div className='cart-item__add-adjust-qty'>
             <i onClick={() => onMinus(id)} className='bx bx-minus'></i>
@@ -43,9 +45,14 @@ function CartItem({
               className='bx bx-plus'
             ></i>
           </div>
-          <button onClick={() => onRemove(id)}>Remove Item</button>
+          <button
+            className='cart-item__add-adjust-qty-button'
+            onClick={() => onRemove(id)}
+          >
+						Remove Item
+          </button>
         </div>
-        <p className='cart-item__price'>${price}</p>
+        <p className='cart-item__add-each'>${price}</p>
       </div>
     </div>
   );
