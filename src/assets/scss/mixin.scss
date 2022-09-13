@@ -1,0 +1,10 @@
+$min-tablet-width: 738px;
+$max-tablet-width: 1300px;
+
+@mixin responsive($type) {
+  @if $type==tablet {
+    @media only screen and (min-width: $min-tablet-width) and (max-width: $max-tablet-width) {
+      @content;
+    }
+  }
+}

@@ -1,0 +1,79 @@
+@import 'assets/scss/mixin.scss';
+
+$primary-color: #1AC073;
+$sub-color: #F7F8FA;
+
+.footer {
+	height: 15vh;
+	background-color: $primary-color;
+	display: flex;
+	flex-direction: column;
+	&__top {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex: 4;
+		.logo {
+			font-family: 'Squada One', cursive;
+			color: white;
+			font-size: 32px;
+			margin-left: 150px;
+			cursor: pointer;
+			@include responsive(tablet) {
+				margin-left: 50px;
+			}
+		}
+		&-icon {
+			margin-right: 150px;
+			& .fb {
+				margin-right: 20px;
+			}
+			& i {
+				font-size: 30px;
+				color: white;
+				cursor: pointer;
+			}
+			& i:hover {
+				opacity: 0.8;
+			}
+			@include responsive(tablet) {
+				margin-right: 50px;
+			}
+		}
+		&-nav {
+			display: flex;
+			justify-content: space-between;
+			width: 70vh;
+			font-family: 'ABeeZee', sans-serif;
+			font-size: 18px;
+			& a {
+				color: white;
+				text-decoration: none;
+			}
+			@include responsive(tablet) {
+				width: 45vh;
+				font-size: 16px;
+			}
+		}
+	}
+	&__bottom {
+		flex: 2;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		&-line {
+			width: 80vw;
+			border-top: 1px solid white;
+			margin-bottom: 20px;
+			@include responsive(tablet) {
+				width: 70vw;
+			}
+		}
+		&-copyright {
+			color: white;
+			font-size: 14px;
+			margin-bottom: 20px;
+		}
+	}
+}
